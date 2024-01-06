@@ -1,6 +1,6 @@
 ![logo](https://github.com/FRC-3695/2023-Season---Crescendo/blob/master/Logo.jpeg?raw=true)
 ## Code Health
-[![CodeFactor](https://www.codefactor.io/repository/github/frc-3695/2024-season/badge)](https://www.codefactor.io/repository/github/frc-3695/2024-season)
+[![CodeFactor](https://www.codefactor.io/repository/github/frc-3695/2024-season---showtime/badge)](https://www.codefactor.io/repository/github/frc-3695/2024-season---showtime)
 ## Season Notes
 Season Code - `k2!a*$how#!TiMe4^d*9`
 ## Code Notes
