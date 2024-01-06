@@ -2,7 +2,7 @@
 ## Code Health
 [![CodeFactor](https://www.codefactor.io/repository/github/frc-3695/2024-season/badge)](https://www.codefactor.io/repository/github/frc-3695/2024-season)
 ## Season Notes
-Season Code - k2!a*show#!TiMe4^d*9
+Season Code - `k2!a*$how#!TiMe4^d*9`
 ## Code Notes
 ## Contributor(s)
 - 
