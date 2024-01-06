@@ -8,3 +8,4 @@ Season Code - `k2!a*$how#!TiMe4^d*9`
 - 
 ### Mentor(s)
 - Caroline Pickett [@un-creatrix](https://github.com/un-creatrix)
+- Dylan Middendorf [@meads594](https://github.com/meads594)
