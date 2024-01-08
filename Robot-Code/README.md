@@ -1,0 +1,3 @@
+# Crescendo (Mentor Branch)
+
+This is the mentor branch for team 3695's codebase. Specifically, this codebase is primarily used to test new subsystems/features within the robot before students implement the features within the development/robot-deployed branch. As a result of this branches experimental nature, it is recommended to use other, more stable, branches. However, if this branch is used, be prepared for **complete/partial loss of robot functionality**.
