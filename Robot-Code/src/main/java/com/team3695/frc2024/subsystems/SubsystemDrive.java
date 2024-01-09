@@ -4,14 +4,15 @@
 
 package com.team3695.frc2024.subsystems;
 
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
-import static com.team3695.frc2024.Constants.SubsystemDriveConstants.*;
-
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import com.team3695.frc2024.RobotContainer;
+
+import static com.team3695.frc2024.Constants.SubsystemDriveConstants.*;
 
 public class SubsystemDrive extends SubsystemBase {
   /** Subsystem singleton instance */
@@ -31,7 +32,7 @@ public class SubsystemDrive extends SubsystemBase {
 
     // Initialize differential drivetrain (KISS)
     this.drivetrain = new DifferentialDrive(leftMaster, rightMaster);
-    
+
     // Initialize drivetrain defaults
     initializeDefaults();
   }
@@ -47,7 +48,10 @@ public class SubsystemDrive extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void arcadeDrive(double xSpeed, double zRotation) {
+  public void arcadeDrive() {
+    XboxController driver = RobotContainer.getDriver();
+    double xSpeed = driver.getRightTriggerAxis() - driver.getLeftTriggerAxis();
+    double zRotation = driver.getLeftX(); // Similar to Rocket League controls
     drivetrain.arcadeDrive(xSpeed, zRotation);
   }
 
@@ -67,6 +71,7 @@ public class SubsystemDrive extends SubsystemBase {
     rightSlave.setInverted(RIGHT_SLAVE_INVERT);
   }
 
+  /** Sets the current limit in Amps. */
   private void setCurrentLimits(int limit) {
     leftMaster.setSmartCurrentLimit(limit);
     leftSlave.setSmartCurrentLimit(limit);

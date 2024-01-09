@@ -17,6 +17,14 @@ import com.revrobotics.CANSparkBase.IdleMode;
  * wherever the constants are needed, to reduce verbosity.
  */
 public final class Constants { // @formatter:off
+    public static class DriverConstants {
+        public static final int PORT = 0;
+    }
+
+    public static class OperatorConstants {
+        public static final int PORT = 1;
+    }
+
     public static class SubsystemDriveConstants {
         
         /** Drive subsystem SparkMax device IDs */
