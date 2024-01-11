@@ -1,5 +1,5 @@
 # Controller Layout and Operation
-![logo](https://github.com/FRC-3695/2024-Season---ShowTime/Images/Xbox_Controller-1757742282.jpg?raw=true)
+![xboxcontroller](https://github.com/FRC-3695/2024-Season---ShowTime/blob/development/Images/Controller.jpeg?raw=true?raw=true)
 ## Drive Train `Drivers Controller`
 * Forward `RT`
 * Reverse `LT`
