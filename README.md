@@ -9,6 +9,9 @@
 Season Code - `k2!a*$how#!TiMe4^d*9`
 ## Code Notes
 ## Contributor(s)
+- Chris Nendick  [@ChrisNendick](https://github.com/ChrisNendick)
+- Sam  [@Sauryam](https://github.com/Sauryam)
+- Mike  [@FoximusMike](https://github.com/FoximusMike)
 - 
 ### Mentor(s)
 - Caroline Pickett [@un-creatrix](https://github.com/un-creatrix)
