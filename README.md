@@ -10,9 +10,18 @@ Season Code - `k2!a*$how#!TiMe4^d*9`
 ## Code Notes
 ## Contributor(s)
 - Chris Nendick  [@ChrisNendick](https://github.com/ChrisNendick)
-- Sam  [@Sauryam](https://github.com/Sauryam)
-- Mike  [@FoximusMike](https://github.com/FoximusMike)
-- 
+- Sam Shrestha  [@Sauryam](https://github.com/Sauryam)
+- Michael Nabours  [@FoximusMike](https://github.com/FoximusMike)
+- Liam Schimdt
 ### Mentor(s)
 - Caroline Pickett [@un-creatrix](https://github.com/un-creatrix)
 - Dylan Middendorf [@meads594](https://github.com/meads594)
+## Resources
+### How to Git
+`Among the many links found below you will find links to guides on Git & GitHub, Documentation of WPILib, RevLib, Pheonix Libraries, & LimeLight Vision`
+- [GitHub Getting Started](https://docs.github.com/en/get-started)
+- [Git Simplified - Video](https://youtu.be/HkdAHXoRtos?si=phwDUfXwC512ukUh)
+- [WPILib Documentation - Advanced](https://docs.wpilib.org/en/stable/stubs/advanced-programming-stub.html)
+- RevLib - TBA
+- CTR Electronics Pheonix - TBA
+- LimeLight - TBA
