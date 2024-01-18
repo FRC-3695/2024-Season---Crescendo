@@ -8,27 +8,24 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 
-
-
-
-
-
-
 public class DriveTrain extends SubsystemBase{
+
+    CommandXboxController controller;
+    double rightTrigger;
+    double leftTrigger;
+
 
     public static CANSparkMax leftMaster;
     public static CANSparkMax leftSlave; 
     public static CANSparkMax rightMaster;
     public static CANSparkMax rightSlave;
 
-   
-
-
-    CommandXboxController controller;
 
 
 
     public void Drive() {
+
+   
 
 
     double leftSpeed = 0.3;
@@ -51,6 +48,11 @@ public class DriveTrain extends SubsystemBase{
     rightMaster = new CANSparkMax(3, com.revrobotics.CANSparkLowLevel.MotorType.kBrushless);
     rightSlave = new CANSparkMax(4, com.revrobotics.CANSparkLowLevel.MotorType.kBrushless);
 
+
+
+
+
+
     
 
 
@@ -58,11 +60,18 @@ public class DriveTrain extends SubsystemBase{
 
     public void periodic() {
 
-        
+       
+    
+
+        boolean useJoystick;
+        double leftJoyStick = controller.getLeftX();
+        double speed = MathUtil.applyDeadband(rightTrigger - leftTrigger, 0.1);
+        double steering = MathUtil.applyDeadband(leftJoyStick, 0.1); 
+    
+        leftTrigger = controller.getLeftTriggerAxis();
+        rightTrigger = controller.getRightTriggerAxis();
         
 
-        double leftJoystick = controller.getLeftX();
-        double steering = MathUtil.applyDeadband(leftJoystick, 0.1);
 
 
 

@@ -22,6 +22,6 @@ Season Code - `k2!a*$how#!TiMe4^d*9`
 - [GitHub Getting Started](https://docs.github.com/en/get-started)
 - [Git Simplified - Video](https://youtu.be/HkdAHXoRtos?si=phwDUfXwC512ukUh)
 - [WPILib Documentation - Advanced](https://docs.wpilib.org/en/stable/stubs/advanced-programming-stub.html)
-- [RevLib](https://docs.revrobotics.com/sparkmax/software-resources/spark-max-api-information)
-- [CTR Electronics Pheonix](https://store.ctr-electronics.com/software/)
-- [LimeLight](https://docs.limelightvision.io/docs/docs-limelight/getting-started/summary)
+- RevLib - TBA
+- CTR Electronics Pheonix - TBA
+- LimeLight - TBA
