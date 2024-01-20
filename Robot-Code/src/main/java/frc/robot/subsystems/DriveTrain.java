@@ -9,6 +9,13 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import com.revrobotics.RelativeEncoder;
 
 
+//Encoders
+//Motors
+//contols
+//speed and steering
+//
+
+
 
 public class DriveTrain extends SubsystemBase{
 
@@ -39,7 +46,7 @@ public class DriveTrain extends SubsystemBase{
     leftMasterEncoder = leftMaster.getEncoder();
     leftSlaveEncoder = leftMaster.getEncoder();
     rightMasterEncoder = rightMaster.getEncoder();
-     rightSlaveEncoder = rightSlave.getEncoder();
+    rightSlaveEncoder = rightSlave.getEncoder();
 
 
 
@@ -76,6 +83,28 @@ public class DriveTrain extends SubsystemBase{
         steering *= turnSpeedInhibitor;
         speed *= speedInhibitor;
 
+    }
+
+
+    // call this function to stop drive train 
+
+    public void stopDriveTrain() {
+
+        leftMaster.set(0);
+        leftSlave.set(0);
+        rightMaster.set(0);
+        rightSlave.set(0);
+    }
+
+
+    //call this function to zero encoders
+
+    public void zeroEncoders() {
+
+        leftMasterEncoder.setPosition(0);
+        leftSlaveEncoder.setPosition(0);
+        rightMasterEncoder.setPosition(0);
+        rightSlaveEncoder.setPosition(0);
     }
 
 
