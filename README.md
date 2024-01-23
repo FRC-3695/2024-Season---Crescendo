@@ -18,10 +18,13 @@ Season Code - `k2!a*$how#!TiMe4^d*9`
 - Dylan Middendorf [@meads594](https://github.com/meads594)
 ## Resources
 ### How to Git
-`Among the many links found below you will find links to guides on Git & GitHub, Documentation of WPILib, RevLib, Pheonix Libraries, & LimeLight Vision`
+`Among the many links found below you will find links to guides on Git & GitHub`
 - [GitHub Getting Started](https://docs.github.com/en/get-started)
 - [Git Simplified - Video](https://youtu.be/HkdAHXoRtos?si=phwDUfXwC512ukUh)
+### Code Documentation & Libraries
+`Documentation of WPILib, RevLib, Pheonix Libraries, & LimeLight Vision`
 - [WPILib Documentation - Advanced](https://docs.wpilib.org/en/stable/stubs/advanced-programming-stub.html)
 - [RevLib](https://docs.revrobotics.com/sparkmax/software-resources/spark-max-api-information)
+- [RevLib Git - SparkMax](https://github.com/REVrobotics/SPARK-MAX-Examples/tree/b865e5fa644bc859769c7a6130b7101176aec6d5/Java)
 - [CTR Electronics Pheonix](https://store.ctr-electronics.com/software/)
 - [LimeLight](https://docs.limelightvision.io/docs/docs-limelight/getting-started/summary)
