@@ -1,4 +1,4 @@
-![logo](https://github.com/FRC-3695/2023-Season---Crescendo/blob/master/Logo.jpeg?raw=true)
+![logo](https://github.com/FRC-3695/2024-Season---ShowTime/blob/development/Images/Logo.png?raw=true)
 ## Code Health
 ### Development
 [![Development](https://www.codefactor.io/repository/github/frc-3695/2024-season---showtime/badge)](https://www.codefactor.io/repository/github/frc-3695/2024-season---showtime)
