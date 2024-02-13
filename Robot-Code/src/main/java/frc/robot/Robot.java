@@ -7,14 +7,32 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+// Adds Smart Dashboard Capabilities for Autonomous chooser
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends TimedRobot {
+  // Creation of Autonomous functions IDs and Varriables
+  private static final String dash_auto_1 = "SpeakerShot";
+  private static final String dash_auto_2 = "AmpDump";
+  private static final String dash_auto_3 = "SpeakerAnScram";
+  private static final String dash_auto_4 = "AmpDumpAnScram";
+  private String dash_autoSelected;
+  private final SendableChooser<String> dash_autoOptions = new SendableChooser<>();
+
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
 
   @Override
   public void robotInit() {
+    // Loads Choices into SmartDashboard Autonomous Chooser
+    dash_autoOptions.setDefaultOption("Speaker Shoot and Wait", dash_auto_1);
+    dash_autoOptions.addOption("Amp Dump and Wait", dash_auto_2);
+    dash_autoOptions.addOption("Apeaker Shoot and Move Over", dash_auto_3);
+    dash_autoOptions.addOption("Amp Dump and Move Over", dash_auto_4);
+    SmartDashboard.putData("Auto choices", dash_autoOptions);
+
     m_robotContainer = new RobotContainer();
   }
 
