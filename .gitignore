@@ -1,5 +1,5 @@
 
 Game-Assets/2024CRESCENDO-PlayingFieldImages.zip
 Game-Assets/CRESCENDO2024Field-SOLIDWORKS.zip
-.DS_Store
+*.DS_Store
 Robot-Code/.vscode/launch.json
