@@ -8,3 +8,4 @@ Robot-Code/.vscode/launch.json
 .DS_Store
 .AppleDouble
 .LSOverride
+Robot-Code/src/main/java/frc/robot/BuildConstants.java
