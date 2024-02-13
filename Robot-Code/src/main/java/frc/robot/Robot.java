@@ -59,24 +59,43 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+    dash_autoSelected = dash_autoOptions.getSelected();
+    /*m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
-    }
+    }*/
   }
 
   @Override
-  public void autonomousPeriodic() {}
+  public void autonomousPeriodic() {
+    switch(dash_autoSelected){
+      case dash_auto_1:
+        // Shoot into Speaker
+        break;
+      case dash_auto_2:
+        // Dump note into amp
+        break;
+      case dash_auto_3:
+        // Shoot into Speaker and Move out of the way
+        break;
+      case dash_auto_4:
+        // Dump note into amp and Move out of the way
+        break;
+      default:
+        // Action Taken with no action or nothing matches
+        break;
+    }
+  }
 
   @Override
   public void autonomousExit() {}
 
   @Override
   public void teleopInit() {
-    if (m_autonomousCommand != null) {
+    /*if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
-    }
+    }*/
   }
 
   @Override
