@@ -36,7 +36,7 @@ public class Robot extends TimedRobot {
     // Loads Choices into SmartDashboard Autonomous Chooser
     dash_autoOptions.setDefaultOption("Speaker Shoot and Wait", dash_auto_1);
     dash_autoOptions.addOption("Amp Dump and Wait", dash_auto_2);
-    dash_autoOptions.addOption("Apeaker Shoot and Move Over", dash_auto_3);
+    dash_autoOptions.addOption("Speaker Shoot and Move Over", dash_auto_3);
     dash_autoOptions.addOption("Amp Dump and Move Over", dash_auto_4);
     SmartDashboard.putData("Auto choices", dash_autoOptions);
 
