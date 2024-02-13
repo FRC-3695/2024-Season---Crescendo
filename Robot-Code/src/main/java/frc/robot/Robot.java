@@ -29,10 +29,19 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     // Prints codes GIT commit version, date, and build date
+    System.out.println("|");
+    System.out.println("****************************************************");
     System.out.println("Build Branch: "+ BuildConstants.MAVEN_NAME);
     System.out.println("GIT Revision: "+ BuildConstants.GIT_REVISION);
     System.out.println("Built on: "+ BuildConstants.BUILD_DATE + " @ " + BuildConstants.BUILD_UNIX_TIME);
     System.out.println("GIT_SHA: "+ BuildConstants.GIT_SHA);
+    if(BuildConstants.DIRTY != 0) { // Warning of uncommited changes in deployed build
+      System.out.println("|");
+      System.out.println("****************************************************");
+      System.out.println("    ********** Fruit of the Poisonous Tree *************");
+    }
+    System.out.println("****************************************************");
+    System.out.println("|");
     // Loads Choices into SmartDashboard Autonomous Chooser
     dash_autoOptions.setDefaultOption("Speaker Shoot and Wait", dash_auto_1);
     dash_autoOptions.addOption("Amp Dump and Wait", dash_auto_2);
