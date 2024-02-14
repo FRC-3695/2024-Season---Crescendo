@@ -1,5 +1,7 @@
 package frc.robot.subsystems;
 
-public class lifter {
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+public class lifter extends SubsystemBase {
     
 }
