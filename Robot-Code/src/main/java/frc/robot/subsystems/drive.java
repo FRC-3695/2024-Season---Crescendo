@@ -10,6 +10,7 @@ import com.revrobotics.RelativeEncoder;                 // REVLib Relative Encod
 // WPI Lib Functions
 import edu.wpi.first.math.geometry.Pose2d;              // Updates 2D field map for SmartDash
 import edu.wpi.first.wpilibj.Encoder;                   // Encoder Functions Supplied
+import edu.wpi.first.wpilibj.XboxController;            // Adds support for Xbox controller
 
 
 public class drive extends SubsystemBase{
@@ -27,6 +28,9 @@ public class drive extends SubsystemBase{
         robot_drive_leftMaster.getEncoder();
     private RelativeEncoder robot_drive_encoderRight =
         robot_drive_rightMaster.getEncoder();
+    // Defining Driver Controller
+    private final XboxController drivestation_driver =
+        new XboxController(Constants.operatorConstants.controller_xBox_driver);
 
     public void driveStart() {
         setupFollowers();
