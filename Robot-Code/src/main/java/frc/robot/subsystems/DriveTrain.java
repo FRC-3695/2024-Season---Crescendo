@@ -67,6 +67,17 @@ public class DriveTrain extends SubsystemBase {
     leftSlave = new CANSparkMax(2, com.revrobotics.CANSparkLowLevel.MotorType.kBrushless);
     rightMaster = new CANSparkMax(3, com.revrobotics.CANSparkLowLevel.MotorType.kBrushless);
     rightSlave = new CANSparkMax(4, com.revrobotics.CANSparkLowLevel.MotorType.kBrushless);
+
+
+    leftMaster.restoreFactoryDefaults();
+    rightMaster.restoreFactoryDefaults();
+
+    leftSlave.follow(leftMaster);
+    rightSlave.follow(rightMaster);
+
+   
+
+
     }
     public void periodic() {
 
@@ -74,11 +85,11 @@ public class DriveTrain extends SubsystemBase {
         rightTrigger = controller.getRightTriggerAxis();
         
         double leftJoyStick = controller.getLeftX();
-        double speed = MathUtil.applyDeadband(rightTrigger - leftTrigger, 0.1);
-        double steering = MathUtil.applyDeadband(leftJoyStick, 0.1); 
+        double steering = MathUtil.applyDeadband(rightTrigger - leftTrigger, 0.1);
+        double speed = MathUtil.applyDeadband(leftJoyStick, 0.1); 
 
-        //SlewRateLimiter filter = new SlewRateLimiter(0.6);
-        //filter.calculate(leftJoyStick);
+        SlewRateLimiter filter = new SlewRateLimiter(1);
+        filter.calculate(leftJoyStick);
 
         steering *= Constants.turnSpeedInhibitor;
         speed *= Constants.speedInhibitor;
@@ -96,13 +107,14 @@ public class DriveTrain extends SubsystemBase {
         leftSpeed = MathUtil.clamp(leftSpeed, -1, 1);
         rightSpeed = MathUtil.clamp(rightSpeed, -1, 1);
 
+            
 
         rightMaster.set(rightSpeed);
-        rightSlave.set(rightSpeed);
+        //rightSlave.set(rightSpeed);
 
         leftMaster.set(leftSpeed);
-        leftSlave.set(leftSpeed);
-        
+        //leftSlave.set(leftSpeed);
+
     }
     // call this function to stop drive train 
 
