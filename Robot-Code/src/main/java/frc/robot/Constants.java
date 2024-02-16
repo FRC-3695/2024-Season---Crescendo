@@ -24,5 +24,10 @@ public final class Constants {
         public static final int controller_xBox_driver          = 0;  // DS USB ID
         public static final int controller_xBox_manip           = 1;  // DS USB ID
     }
+    public static class shooterPID {
+        public static final double motor_shooter_P              = 0.000000;     // Proportional Variable
+        public static final double motor_shooter_I              = 0.000000;     // Intergral Variable
+        public static final double motor_shooter_D              = 0.000000;     // Derivative Variable
+        public static final double motor_shooter_FF             = 0.000000;     // Feed Forward Variable
     }
 }
