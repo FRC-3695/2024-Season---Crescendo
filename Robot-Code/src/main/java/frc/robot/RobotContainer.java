@@ -12,34 +12,20 @@ import frc.robot.subsystems.DriveTrain;
 public class RobotContainer {
   public RobotContainer() {
     configureBindings();
-  
-
   }
-
-  
-  
-  public static DriveTrain drive = DriveTrain.getInstance();
-  private static CommandXboxController driver  = null;
-
-  
-
-
+  public static DriveTrain driveTrain = DriveTrain.getInstance();
+  private static CommandXboxController driver = null;
+    
+  //CommandXboxController controller = new CommandXboxController(0);
   private void configureBindings() {}
 
   public Command getAutonomousCommand() {
     return Commands.print("No autonomous command configured");
   }
-
   public static CommandXboxController getDriver() {
-
     if (driver == null) {
-
       driver = new CommandXboxController(0);
-    }
-
+    } 
     return driver;
-  }
-
-
-
+  } 
 }

@@ -8,95 +8,102 @@ import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.RobotContainer;
-
 import com.revrobotics.RelativeEncoder;
 
 
+public class DriveTrain extends SubsystemBase {
 
-public class DriveTrain extends SubsystemBase{
+    
 
-    private static DriveTrain instance = null;
-    public static DriveTrain getInstance() {
-        if(instance == null)
-          instance = new DriveTrain();
-        return instance;
-      }
 
+
+
+      
 // set up encoders for when we need to access them (currently unused)
-    public static RelativeEncoder leftMasterEncoder;
-    public static RelativeEncoder leftSlaveEncoder;
-    public static RelativeEncoder rightMasterEncoder;
-    public static RelativeEncoder rightSlaveEncoder;
-
     CommandXboxController controller;
-    double rightTrigger;
-    double leftTrigger;
 
-    // replace these later when we have a constants file to place these variables in.
-    double turnSpeedInhibitor = 0.3;
-    double speedInhibitor = 0.3;
+
+
+
 
     public static CANSparkMax leftMaster;
     public static CANSparkMax leftSlave; 
     public static CANSparkMax rightMaster;
     public static CANSparkMax rightSlave;
 
+    public static RelativeEncoder leftMasterEncoder;
+    public static RelativeEncoder leftSlaveEncoder;
+    public static RelativeEncoder rightMasterEncoder;
+    public static RelativeEncoder rightSlaveEncoder;
 
-    public void DriveTrain() {
+    double rightTrigger;
+    double leftTrigger;
 
-    controller = RobotContainer.getDriver();
+    private static DriveTrain instance = null;
 
+    public static DriveTrain getInstance() {
+        if(instance == null)
+          instance = new DriveTrain();
+       
+          return instance;
+      }
 
+    // replace these later when we have a constants file to place these variables in.
+    
+    public DriveTrain() {
+
+    //controller = new CommandXboxController(0);
    //getting encoder values: 
-    leftMasterEncoder = leftMaster.getEncoder();
-    leftSlaveEncoder = leftMaster.getEncoder();
-    rightMasterEncoder = rightMaster.getEncoder();
-    rightSlaveEncoder = rightSlave.getEncoder();
+    
+    
+    
 
+    
 
+   controller = RobotContainer.getDriver();
 
-
-
-
-    double leftSpeed = 0.3;
-    double rightSpeed = 0.3;
-
-    leftSpeed = MathUtil.clamp(leftSpeed, -1, 1);
-    rightSpeed = MathUtil.clamp(rightSpeed, -1, 1);
-
-    leftMaster.set(leftSpeed);
-    leftSlave.set(leftSpeed);
-    rightMaster.set(rightSpeed);
-    rightSlave.set(rightSpeed);
-
+   
     leftMaster = new CANSparkMax(1, com.revrobotics.CANSparkLowLevel.MotorType.kBrushless);
     leftSlave = new CANSparkMax(2, com.revrobotics.CANSparkLowLevel.MotorType.kBrushless);
     rightMaster = new CANSparkMax(3, com.revrobotics.CANSparkLowLevel.MotorType.kBrushless);
     rightSlave = new CANSparkMax(4, com.revrobotics.CANSparkLowLevel.MotorType.kBrushless);
-
-
     }
-
     public void periodic() {
 
-        boolean useJoystick;
+        leftTrigger = controller.getLeftTriggerAxis();
+        rightTrigger = controller.getRightTriggerAxis();
+        
         double leftJoyStick = controller.getLeftX();
         double speed = MathUtil.applyDeadband(rightTrigger - leftTrigger, 0.1);
         double steering = MathUtil.applyDeadband(leftJoyStick, 0.1); 
 
-        SlewRateLimiter filter = new SlewRateLimiter(0.3);
-        filter.calculate(leftJoyStick);
+        //SlewRateLimiter filter = new SlewRateLimiter(0.6);
+        //filter.calculate(leftJoyStick);
+
+        steering *= Constants.turnSpeedInhibitor;
+        speed *= Constants.speedInhibitor;
+
+
+
+       double leftSpeed = speed - steering;
+       double rightSpeed = speed + steering;
+      
     
-        leftTrigger = controller.getLeftTriggerAxis();
-        rightTrigger = controller.getRightTriggerAxis();
+        
         
         // will add "constants." infront of turn and speed inhibitor once it's set up in constants  
-        steering *= turnSpeedInhibitor;
-        speed *= speedInhibitor;
+       
+        leftSpeed = MathUtil.clamp(leftSpeed, -1, 1);
+        rightSpeed = MathUtil.clamp(rightSpeed, -1, 1);
 
+
+        rightMaster.set(rightSpeed);
+        rightSlave.set(rightSpeed);
+
+        leftMaster.set(leftSpeed);
+        leftSlave.set(leftSpeed);
+        
     }
-
-
     // call this function to stop drive train 
 
     public void stopDriveTrain() {
@@ -106,8 +113,6 @@ public class DriveTrain extends SubsystemBase{
         rightMaster.set(0);
         rightSlave.set(0);
     }
-
-
     //call this function to zero encoders
 
     public void zeroEncoders() {
@@ -117,15 +122,4 @@ public class DriveTrain extends SubsystemBase{
         rightMasterEncoder.setPosition(0);
         rightSlaveEncoder.setPosition(0);
     }
-
- 
-
-
-
-
-
-
-
-
-
 }
