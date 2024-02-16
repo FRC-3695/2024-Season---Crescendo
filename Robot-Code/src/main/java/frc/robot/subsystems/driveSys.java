@@ -9,11 +9,15 @@ import com.revrobotics.CANSparkLowLevel.MotorType;      // REVLib MotorType
 import com.revrobotics.RelativeEncoder;                 // REVLib Relative Encoder
 // WPI Lib Functions
 import edu.wpi.first.math.geometry.Pose2d;              // Updates 2D field map for SmartDash
+import edu.wpi.first.util.sendable.SendableRegistry;
 import edu.wpi.first.wpilibj.Encoder;                   // Encoder Functions Supplied
 import edu.wpi.first.wpilibj.XboxController;            // Adds support for Xbox controller
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;   // Introducing Prebuilt drivecontroller
+import edu.wpi.first.math.MathUtil;                     // Mathematics tools
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 
-
-public class drive extends SubsystemBase{
+public class driveSys extends SubsystemBase{
     // Defining Creation of drive motor controllers
     private final CANSparkMax robot_drive_leftMaster = 
         new CANSparkMax(Constants.robotConstants.motor_drive_leftFront, MotorType.kBrushless);
@@ -31,18 +35,36 @@ public class drive extends SubsystemBase{
     // Defining Driver Controller
     private final XboxController drivestation_driver =
         new XboxController(Constants.operatorConstants.controller_xBox_driver);
-
-    public void driveStart() {
+    // Defining diferential drivesystem
+    private final DifferentialDrive robot_drive_difDrive =
+        new DifferentialDrive(robot_drive_leftMaster::set, robot_drive_rightMaster::set);
+    public driveSys() {
+        startDrive();
         setupFollowers();
         startEncoders();
     }
     @Override
     public void periodic() {
+        drivePeriodic();
 
     }
-    /*public Pose2d getPose() {
-
-    }*/
+    public void startDrive() {
+        SendableRegistry.addChild(robot_drive_difDrive, robot_drive_leftMaster);
+        SendableRegistry.addChild(robot_drive_difDrive, robot_drive_rightMaster);
+        robot_drive_leftMaster.setInverted(true);
+        robot_drive_rightMaster.setInverted(false);
+    }
+    public void drivePeriodic() {
+        double robot_drive_x = MathUtil.applyDeadband(
+            drivestation_driver.getRightTriggerAxis()
+            -
+            drivestation_driver.getLeftTriggerAxis(),
+            0.05);
+        double robot_drive_y = MathUtil.applyDeadband(
+            drivestation_driver.getLeftX(),
+        0.05);
+        robot_drive_difDrive.arcadeDrive(robot_drive_x, robot_drive_y);
+    }
     private void setupFollowers() { // Within this function followers will be defined where a master and slave controller relationship will be defined
         // Reset Motors to factory base for core function settings
         robot_drive_leftMaster.restoreFactoryDefaults();
@@ -56,7 +78,7 @@ public class drive extends SubsystemBase{
     private void startEncoders() {
         robot_drive_encoderLeft.setPosition(0);
         robot_drive_encoderRight.setPosition(0);
-        robot_drive_encoderLeft.getInverted();
-        robot_drive_encoderRight.getInverted();
+        //robot_drive_encoderLeft.setInverted(true);
+        //robot_drive_encoderRight.setInverted(false);
     }
 }
