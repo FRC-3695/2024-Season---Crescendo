@@ -1,7 +1,7 @@
 package frc.robot;
 
 public final class Constants {
-    public static class robotConstants {                    // View is taken from rear of robot for sides
+    public static class IDs {                    // View is taken from rear of robot for sides
         // Drive Train Motor Controllers
         public static final int motor_drive_leftFront           = 1;  // CAN ID
         public static final int motor_drive_leftRear            = 2;  // CAN ID

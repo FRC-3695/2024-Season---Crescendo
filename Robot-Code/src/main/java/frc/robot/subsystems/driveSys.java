@@ -20,13 +20,13 @@ import edu.wpi.first.wpilibj2.command.Commands;
 public class driveSys extends SubsystemBase{
     // Defining Creation of drive motor controllers
     private final CANSparkMax robot_drive_leftMaster = 
-        new CANSparkMax(Constants.robotConstants.motor_drive_leftFront, MotorType.kBrushless);
+        new CANSparkMax(Constants.IDs.motor_drive_leftFront, MotorType.kBrushless);
     private final CANSparkMax robot_drive_leftSlave = 
-        new CANSparkMax(Constants.robotConstants.motor_drive_leftRear, MotorType.kBrushless);
+        new CANSparkMax(Constants.IDs.motor_drive_leftRear, MotorType.kBrushless);
     private final CANSparkMax robot_drive_rightMaster = 
-        new CANSparkMax(Constants.robotConstants.motor_drive_rightFront, MotorType.kBrushless);
+        new CANSparkMax(Constants.IDs.motor_drive_rightFront, MotorType.kBrushless);
     private final CANSparkMax robot_drive_rightSlave = 
-        new CANSparkMax(Constants.robotConstants.motor_drive_rightRear, MotorType.kBrushless);
+        new CANSparkMax(Constants.IDs.motor_drive_rightRear, MotorType.kBrushless);
     // Defining Encoders for Functions
     private RelativeEncoder robot_drive_encoderLeft =
         robot_drive_leftMaster.getEncoder();
