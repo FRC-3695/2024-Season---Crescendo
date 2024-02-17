@@ -2,6 +2,6 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class manipulator extends SubsystemBase {
+public class manipulatorShooter extends SubsystemBase {
     
 }
