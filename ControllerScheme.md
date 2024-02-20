@@ -7,10 +7,11 @@
 * High Gear `RB`
 * Low Gear `LB`
 ## Manipulator 'Co-Pilots Controller'
-* Pickup Donut `` _From Floor_
-* Receive Donut `` _From Human Player_
-* Shoot Donut into Amp ``
-* Shoot Donut into Speaker ``
+* Pickup Donut `X` From Floor
+* Receive Donut `Y` From Human Player
+* Shoot Donut into Amp `B`
+* Shoot Donut into Speaker `A`
+* **Auto Action Aquisition** `RT`
 ## Chain Climber 'Dual Operator Control'
 * Lifter Up `DPAD UP`
 * Lifter Down `DPAD DOWN`
