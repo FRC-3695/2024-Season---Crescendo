@@ -78,7 +78,5 @@ public class driveSys extends SubsystemBase{
     private void startEncoders() {
         robot_drive_encoderLeft.setPosition(0);
         robot_drive_encoderRight.setPosition(0);
-        //robot_drive_encoderLeft.setInverted(true);
-        //robot_drive_encoderRight.setInverted(false);
     }
 }
