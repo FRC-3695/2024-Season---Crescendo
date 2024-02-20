@@ -45,6 +45,11 @@ public class driveSys extends SubsystemBase{
 
     }
     public void startDrive() {
+        // Reset Motors to factory base for core function settings
+        robot_drive_leftMaster.restoreFactoryDefaults();
+        robot_drive_leftSlave.restoreFactoryDefaults();
+        robot_drive_rightMaster.restoreFactoryDefaults();
+        robot_drive_rightSlave.restoreFactoryDefaults();
         SendableRegistry.addChild(robot_drive_difDrive, robot_drive_leftMaster);
         SendableRegistry.addChild(robot_drive_difDrive, robot_drive_rightMaster);
         robot_drive_leftMaster.setInverted(true);
@@ -55,18 +60,13 @@ public class driveSys extends SubsystemBase{
             drivestation_driver.getRightTriggerAxis()
             -
             drivestation_driver.getLeftTriggerAxis(),
-            0.05);
+            Constants.operator.tuning_driver_deadband);
         double robot_drive_y = MathUtil.applyDeadband(
             drivestation_driver.getLeftX(),
         0.05);
         robot_drive_difDrive.arcadeDrive(robot_drive_x, robot_drive_y);
     }
     private void setupFollowers() { // Within this function followers will be defined where a master and slave controller relationship will be defined
-        // Reset Motors to factory base for core function settings
-        robot_drive_leftMaster.restoreFactoryDefaults();
-        robot_drive_leftSlave.restoreFactoryDefaults();
-        robot_drive_rightMaster.restoreFactoryDefaults();
-        robot_drive_rightSlave.restoreFactoryDefaults();
         // Setting Followers
         robot_drive_leftSlave.follow(robot_drive_leftMaster);
         robot_drive_rightSlave.follow(robot_drive_rightMaster);
