@@ -12,7 +12,7 @@
 * Shoot Donut into Amp ``
 * Shoot Donut into Speaker ``
 ## Chain Climber 'Dual Operator Control'
-* Climber Up ``
-* Climber Down ``
-* Climber Auto Up ``
-* Climber Auto Down ``
+* Lifter Up `DPAD UP`
+* Lifter Down `DPAD DOWN`
+* Lifter Auto Up `RB`-`Pressed`
+* Lifter Auto Down `RB`-`Released`
