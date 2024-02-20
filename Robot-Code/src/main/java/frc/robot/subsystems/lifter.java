@@ -1,12 +1,9 @@
 package frc.robot.subsystems;
 import frc.robot.Constants;                             // Constants to pass can IDs along to subsystem
-
-import edu.wpi.first.wpilibj2.command.SubsystemBase;    // System to be extended by this subsystem
 // WPI Lib Functions
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.XboxController;            // Adds support for Xbox controller
+import edu.wpi.first.wpilibj2.command.SubsystemBase;    // System to be extended by this subsystem
 // Lib for SparkMax Motor Controllers
 import com.revrobotics.CANSparkMax;                     // SparkMAX CAN Map
 import com.revrobotics.CANSparkLowLevel.MotorType;      // REVLib MotorType
@@ -82,14 +79,17 @@ public class lifter extends SubsystemBase {
                 if (!lifter_left_DIO.get()) {  // Switch is engaged
                     lifter_left_motor.set(0);
                     lifter_left_encoder.setPosition(0);
+                } else {  // Switch is not engaged
+                    lifter_left_motor.set(Constants.lifter.rotation_cal_speed);
                 }
                 if (!lifter_right_DIO.get()) {  // Switch is engaged
                     lifter_right_motor.set(0);
                     lifter_right_encoder.setPosition(0);
+                } else {  // Switch is not engaged
+                    lifter_right_motor.set(Constants.lifter.rotation_cal_speed);
                 }
                 if (!lifter_left_DIO.get() || !lifter_right_DIO.get()) {break;}  // Both Switches become Engaged
             }
         }
-        
     }
 }
