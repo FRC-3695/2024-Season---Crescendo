@@ -12,16 +12,15 @@ import com.revrobotics.RelativeEncoder;                 // REVLib Relative Encod
 
 public class lifter extends SubsystemBase {
     // Defining Motor Controllers
-    private final CANSparkMax motor_lifter_left =
-        new CANSparkMax(Constants.IDs.motor_lifterLeft, MotorType.kBrushless);
-    private final CANSparkMax motor_lifter_right =
-        new CANSparkMax(Constants.IDs.motor_lifterRight, MotorType.kBrushless)
+    private final CANSparkMax lifter_left_motor =
+        new CANSparkMax(Constants.IDs.lifter_left_motor, MotorType.kBrushless);
+    private final CANSparkMax lifter_right_motor =
+        new CANSparkMax(Constants.IDs.lifter_right_motor, MotorType.kBrushless);
     // Defining Sensors
-    private final RelativeEncoder encoder_lifter_left =
-        motor_lifter_left.getEncoder();
-    private final RelativeEncoder encoder_lifter_right =
-        motor_lifter_right.getEncoder();
-    
+    private final RelativeEncoder lifter_left_encoder =
+        lifter_left_motor.getEncoder();
+    private final RelativeEncoder lifter_right_encoder =
+        lifter_right_motor.getEncoder();
 
     public lifter() {
 
