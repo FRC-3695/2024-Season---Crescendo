@@ -30,5 +30,15 @@ public final class Constants {
         public static final double tuning_D                     = 0.000000;     // Derivative Variable
         public static final double tuning_FF                    = 0.000000;     // Feed Forward Variable
     }
+    public static class lifter {
+        public static final double tuning_P                     = 0.010000;     // Proportional Variable
+        public static final double tuning_I                     = 0.000100;     // Intergral Variable
+        public static final double tuning_D                     = 1.000000;     // Derivative Variable
+        public static final double tuning_Iz                    = 0.000000;     // Intergral Z Variable
+        public static final double tuning_FF                    = 0.000000;     // Feed Forward Variable
+        public static final double tuning_speedMin              =-0.50;         // Max Inward Motor Speed
+        public static final double tuning_speedMax              = 0.50;         // Max Outward Motor Speed
+        public static final double rotation_calibration         = 5.00;         // Rotations to lift climber before retracting it to calibrate
+        public static final double rotation_climb               = 0.00;         // How many rotations required to fully deply lifter
     }
 }
