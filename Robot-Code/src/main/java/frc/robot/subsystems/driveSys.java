@@ -1,17 +1,15 @@
 package frc.robot.subsystems;
 import frc.robot.Constants;                             // Constants to pass can IDs along to subsystem
-
-import edu.wpi.first.wpilibj2.command.SubsystemBase;    // System to be extended by this subsystem
 // Lib for SparkMax Motor Controllers
 import com.revrobotics.CANSparkMax;                     // SparkMax
 import com.revrobotics.CANSparkLowLevel.MotorType;      // REVLib MotorType
 import com.revrobotics.RelativeEncoder;                 // REVLib Relative Encoder
 // WPI Lib Functions
-import edu.wpi.first.math.geometry.Pose2d;              // Updates 2D field map for SmartDash
 import edu.wpi.first.util.sendable.SendableRegistry;
 import edu.wpi.first.wpilibj.XboxController;            // Adds support for Xbox controller
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;   // Introducing Prebuilt drivecontroller
 import edu.wpi.first.math.MathUtil;                     // Mathematics tools
+import edu.wpi.first.wpilibj2.command.SubsystemBase;    // System to be extended by this subsystem
 
 public class driveSys extends SubsystemBase{
     // Defining Creation of drive motor controllers
