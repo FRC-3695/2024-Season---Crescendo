@@ -41,12 +41,16 @@ public class lifter extends SubsystemBase {
     }
     @Override
     public void periodic() {  // Periodic to lock onto controller buttons assigned to secondary controller
-        
+        if (drivestation_operator.getRightBumper()) { // Lifter Deployment Triggered
+            armDeploy();
+        } else {  // Retract or Keep Lifter retracted
+            armRetract();
+        }
     }
     private void armDeploy() {  // Extends Lifter out to latch onto chain
 
     }
-    private void armsRetract() {  // Retracts Lifter in body of robot
+    private void armRetract() {  // Retracts Lifter in body of robot
 
     }
     private void setupMotors() {  // Sets up motors with reversing and PID Data
