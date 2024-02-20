@@ -1,7 +1,7 @@
 plugins {
-    id "java"
-    id "edu.wpi.first.GradleRIO" version "2024.3.1"
-    id "com.peterabeles.gversion" version "1.10"
+    id("java")
+    id("edu.wpi.first.GradleRIO") version "2024.3.1"
+    id("com.peterabeles.gversion") version "1.10.2"
 }
 
 java {
@@ -101,7 +101,6 @@ tasks.withType(JavaCompile) {
     options.compilerArgs.add '-XDstringConcat=inline'
 }
 // Adds GIT data to Build
-project.compileJava.dependsOn(createVersionFile)
 gversion {
   srcDir       = "src/main/java/"
   classPackage = "frc.robot"
@@ -110,3 +109,4 @@ gversion {
   timeZone     = "America/Chicago" // Use preferred time zone
   indent       = "  "
 }
+project.compileJava.dependsOn(createVersionFile)
