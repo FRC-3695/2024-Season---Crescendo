@@ -79,15 +79,15 @@ public class lifter extends SubsystemBase {
             lifter_left_PID.setReference(Constants.lifter.rotation_calibration, CANSparkMax.ControlType.kPosition);
             lifter_right_PID.setReference(Constants.lifter.rotation_calibration, CANSparkMax.ControlType.kPosition);
             while(true) {
-                if (!lifter_left_DIO.get()) {
+                if (!lifter_left_DIO.get()) {  // Switch is engaged
                     lifter_left_motor.set(0);
                     lifter_left_encoder.setPosition(0);
                 }
-                if (!lifter_right_DIO.get()) {
+                if (!lifter_right_DIO.get()) {  // Switch is engaged
                     lifter_right_motor.set(0);
                     lifter_right_encoder.setPosition(0);
                 }
-                if (!lifter_left_DIO.get() || !lifter_right_DIO.get()) {break;}
+                if (!lifter_left_DIO.get() || !lifter_right_DIO.get()) {break;}  // Both Switches become Engaged
             }
         }
         
