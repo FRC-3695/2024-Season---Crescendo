@@ -31,8 +31,9 @@ public final class Constants {
         public static final int shooter_right_powerBus          = 0;  // PowerHub
     }
     public static class operator {
-        public static final int controller_xBox_driver          = 0;  // DS USB ID
-        public static final int controller_xBox_manip           = 1;  // DS USB ID
+        public static final int controller_xBox_driver          = 0;            // DS USB ID
+        public static final double tuning_driver_deadband       = 0.15;         // DeadBand for Driver Joysticks and Triggers
+        public static final int controller_xBox_manip           = 1;            // DS USB ID
     }
     public static class shooter {
         public static final double tuning_P                     = 0.000000;     // Proportional Variable
