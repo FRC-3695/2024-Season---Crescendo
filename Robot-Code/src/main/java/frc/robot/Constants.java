@@ -39,6 +39,7 @@ public final class Constants {
         public static final double tuning_speedMin              =-0.50;         // Max Inward Motor Speed
         public static final double tuning_speedMax              = 0.50;         // Max Outward Motor Speed
         public static final double rotation_calibration         = 5.00;         // Rotations to lift climber before retracting it to calibrate
+        public static final double rotation_cal_speed           = 0.15;         // Speed at which calibration occurs
         public static final double rotation_climb               = 0.00;         // How many rotations required to fully deply lifter
     }
 }
