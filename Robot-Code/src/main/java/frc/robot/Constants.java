@@ -39,6 +39,7 @@ public final class Constants {
         public static final double tuning_P                     = 0.000000;     // Proportional Variable
         public static final double tuning_I                     = 0.000000;     // Intergral Variable
         public static final double tuning_D                     = 0.000000;     // Derivative Variable
+        public static final double tuning_Iz                    = 0.000000;     // Intergral Variable
         public static final double tuning_FF                    = 0.000000;     // Feed Forward Variable
     }
     public static class lifter {
@@ -54,7 +55,7 @@ public final class Constants {
         public static final double rotation_climb               = 0.00;         // How many rotations required to fully deply lifter
     }
     public static class vision {
-        public static final double[][] targeting_alignment      = {  // Targeting Alignment Data for Apriltag's
+        public static final double[][] targeting_april_alignment      = {  // Targeting Alignment Data for AprilTag's
         //       |ID#|   | X  |+/-| Y  |+/-| Z  |+/-| A  |+/-| R  |+/-| P  |+/-| Ya |+/-|
                 /* 1 */  {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Blue - Source    (Right)
                 /* 2 */  {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Blue - Source    (Left)
@@ -62,8 +63,8 @@ public final class Constants {
                 /* 4 */  {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Red -  Speaker   (Center)
                 /* 5 */  {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Red -  Amplifier
                 /* 6 */  {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Blue - Amplifier
-                /* 7 */  {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Blue - Speaker   (Right)
-                /* 8 */  {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Blue - Speaker   (Center)
+                /* 7 */  {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Blue - Speaker   (Center)
+                /* 8 */  {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Blue - Speaker   (Left)
                 /* 9 */  {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Red -  Source    (Right)
                 /* 10 */ {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Red -  Source    (Left)
                 /* 11 */ {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Red -  Stage     (Left)
@@ -73,5 +74,26 @@ public final class Constants {
                 /* 15 */ {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Blue - Stage     (Left)
                 /* 16 */ {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Blue - Stage     (Right)
         };
+        public static final String[] targeting_april_name           = {  // Name of Target Identified through AprilTag ID
+        //   |ID#|   | Target Name
+            /* 01 */ "B - Source (Right)",
+            /* 02 */ "B - Source (Left)",
+            /* 03 */ "R - Speaker (Right)",
+            /* 04 */ "R - Speaker (Center)",
+            /* 05 */ "R - Amplifier",
+            /* 06 */ "B - Amplifier",
+            /* 07 */ "B - Speaker (Right)",
+            /* 08 */ "B - Speaker (Center)",
+            /* 09 */ "R - Source (Right)",
+            /* 10 */ "R - Source (Left)",
+            /* 11 */ "R - Stage (Left)",
+            /* 12 */ "R - Stage (Right)",
+            /* 13 */ "R - Stage (Center)",
+            /* 14 */ "B - Stage (Center)",
+            /* 15 */ "B - Stage (Left)",
+            /* 16 */ "B - Stage (Right)",
+        };
+        public static final String frontCamera                  = "";       // Front of Robot Limelight3
+        public static final String rearCamera                   = "";       // Front of Robot Limelight2
     }   
 }
