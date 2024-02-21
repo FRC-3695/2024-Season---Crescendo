@@ -53,4 +53,25 @@ public final class Constants {
         public static final double rotation_cal_speed           = 0.15;         // Speed at which calibration occurs
         public static final double rotation_climb               = 0.00;         // How many rotations required to fully deply lifter
     }
+    public static class vision {
+        public static final double[][] targeting_alignment      = {  // Targeting Alignment Data for Apriltag's
+        //       |ID#|   | X  |+/-| Y  |+/-| Z  |+/-| A  |+/-| R  |+/-| P  |+/-| Ya |+/-|
+                /* 1 */  {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Blue - Source    (Right)
+                /* 2 */  {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Blue - Source    (Left)
+                /* 3 */  {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Red -  Speaker   (Right)
+                /* 4 */  {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Red -  Speaker   (Center)
+                /* 5 */  {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Red -  Amplifier
+                /* 6 */  {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Blue - Amplifier
+                /* 7 */  {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Blue - Speaker   (Right)
+                /* 8 */  {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Blue - Speaker   (Center)
+                /* 9 */  {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Red -  Source    (Right)
+                /* 10 */ {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Red -  Source    (Left)
+                /* 11 */ {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Red -  Stage     (Left)
+                /* 12 */ {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Red -  Stage     (Right)
+                /* 13 */ {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Red -  Stage     (Center)
+                /* 14 */ {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Blue - Stage     (Center)
+                /* 15 */ {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Blue - Stage     (Left)
+                /* 16 */ {  10,  1,  15,  3,  25,  5,  15, 25,  65, 75,  86, 12,  23, 86},  // Blue - Stage     (Right)
+        };
+    }   
 }
