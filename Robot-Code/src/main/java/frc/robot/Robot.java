@@ -6,6 +6,7 @@ package frc.robot;
 import frc.robot.Constants;
 import frc.robot.BuildConstants;
 import frc.robot.subsystems.driveSys;
+import frc.robot.subsystems.vision;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -115,7 +116,8 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+  }
 
   @Override
   public void teleopExit() {}
