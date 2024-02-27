@@ -8,7 +8,6 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;    // System to be extended by this subsystem
 
 public class vision extends SubsystemBase{
-   // public double x = 0;
     public void periodic() {
         NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
         NetworkTableEntry tx = table.getEntry("tx");
@@ -21,13 +20,16 @@ public class vision extends SubsystemBase{
         SmartDashboard.putNumber("LimelightX", x);
         SmartDashboard.putNumber("LimelightY", y);
         SmartDashboard.putNumber("LimelightArea", area);
-        //x = x+1;
-        //SmartDashboard.putNumber("Timer", x);
 
-
-
+       //Basic Functionality Tests
         if (SmartDashboard.getNumber("Limelightx", x) == Constants.vision.targeting_april_alignment[4][0] && y == Constants.vision.targeting_april_alignment[4][2]) {
-            System.out.println("works");
+            System.out.println("works");        
+        }
+        if (SmartDashboard.getNumber("Limelightx", x) <= 7 && SmartDashboard.getNumber("Limelightx", x) >= 6) {
+             System.out.println("Works!");
+        }
+        if (SmartDashboard.getNumber("Limelightx", y) <= 7 && SmartDashboard.getNumber("Limelightx", y) >= 6) {
+             System.out.println("Works!");
         }
         
     }
