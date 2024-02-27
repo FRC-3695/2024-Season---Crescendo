@@ -30,6 +30,7 @@ public class Robot extends TimedRobot {
   private Command drivePeriodic;
   private RobotContainer m_robotContainer;
   private driveSys robot_code_drive;
+  private vision vision_code;
 
   @Override
   public void robotInit() {
@@ -57,6 +58,7 @@ public class Robot extends TimedRobot {
     m_robotContainer = new RobotContainer();
     // Decleration of robot functions
     robot_code_drive = new driveSys();
+    vision_code = new vision();
 
   }
 
