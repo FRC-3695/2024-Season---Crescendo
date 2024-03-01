@@ -42,6 +42,9 @@ public final class Constants {
         public static final double tuning_Iz                    = 0.000000;     // Intergral Variable
         public static final double tuning_FF                    = 0.000000;     // Feed Forward Variable
     }
+    public static class intake {
+        public static final double rotation_deployment          = 0.000000;     // Amount of rotation till intake is completly deployed
+    }
     public static class lifter {
         public static final double tuning_P                     = 0.010000;     // Proportional Variable
         public static final double tuning_I                     = 0.000100;     // Intergral Variable
@@ -53,6 +56,7 @@ public final class Constants {
         public static final double rotation_calibration         = 5.00;         // Rotations to lift climber before retracting it to calibrate
         public static final double rotation_cal_speed           = 0.15;         // Speed at which calibration occurs
         public static final double rotation_climb               = 0.00;         // How many rotations required to fully deply lifter
+        public static final double rotation_OV_speed            = 5.00;         // Speed to run lifter at on over ride
     }
     public static class vision {
         public static final double[][] targeting_april_alignment      = {  // Targeting Alignment Data for AprilTag's
