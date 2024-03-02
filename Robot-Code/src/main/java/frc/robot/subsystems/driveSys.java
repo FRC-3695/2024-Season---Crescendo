@@ -50,8 +50,8 @@ public class driveSys extends SubsystemBase{
         robot_drive_rightSlave.restoreFactoryDefaults();
         SendableRegistry.addChild(robot_drive_difDrive, robot_drive_leftMaster);
         SendableRegistry.addChild(robot_drive_difDrive, robot_drive_rightMaster);
-        robot_drive_leftMaster.setInverted(true);
-        robot_drive_rightMaster.setInverted(false);
+        robot_drive_leftMaster.setInverted(Constants.drive.drive_rev_left);
+        robot_drive_rightMaster.setInverted(Constants.drive.drive_rev_right);
     }
     public void drivePeriodic() {
         double robot_drive_x = MathUtil.applyDeadband(

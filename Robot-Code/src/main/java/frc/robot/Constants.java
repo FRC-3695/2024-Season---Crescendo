@@ -30,6 +30,11 @@ public final class Constants {
         public static final int shooter_right_motor             = 10; // CAN ID
         public static final int shooter_right_powerBus          = 0;  // PowerHub Port
     }
+    public static class drive {
+        public static boolean drive_direction                   = false;  // To be used in future to offer drive reversing to driver
+        public static final boolean drive_rev_left              = true;   // Reverses left drivetrain
+        public static final boolean drive_rev_right             = false;  // Reverses right drivetrain
+    }
     public static class operator {
         public static final int controller_xBox_driver          = 0;            // DS USB ID
         public static final double tuning_driver_deadband       = 0.15;         // DeadBand for Driver Joysticks and Triggers
@@ -41,11 +46,15 @@ public final class Constants {
         public static final double tuning_D                     = 0.000000;     // Derivative Variable
         public static final double tuning_Iz                    = 0.000000;     // Intergral Variable
         public static final double tuning_FF                    = 0.000000;     // Feed Forward Variable
+        public static final boolean rev_left                    = false;        // Reverse Left motor
+        public static final boolean rev_right                   = false;        // Reverse Right motor
     }
     public static class intake {
         public static final double rotation_deployment          = 0.000000;     // Amount of rotation till intake is completly deployed
     }
     public static class lifter {
+        public static final boolean rev_left                    = false;
+        public static final boolean rev_right                   = false;
         public static final double tuning_P                     = 0.010000;     // Proportional Variable
         public static final double tuning_I                     = 0.000100;     // Intergral Variable
         public static final double tuning_D                     = 1.000000;     // Derivative Variable

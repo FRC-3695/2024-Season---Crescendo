@@ -58,8 +58,8 @@ public class lifter extends SubsystemBase {
         lifter_left_motor.restoreFactoryDefaults();
         lifter_right_motor.restoreFactoryDefaults();
         // Set Inversion
-        lifter_left_motor.setInverted(false);
-        lifter_right_motor.setInverted(false);
+        lifter_left_motor.setInverted(Constants.lifter.rev_left);
+        lifter_right_motor.setInverted(Constants.lifter.rev_right);
         // Set PIDs Encoders
         lifter_left_PID.setFeedbackDevice(lifter_left_encoder);
         lifter_right_PID.setFeedbackDevice(lifter_right_encoder);
