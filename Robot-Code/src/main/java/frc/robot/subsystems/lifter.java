@@ -13,7 +13,6 @@ import com.revrobotics.SparkPIDController;              // REVLib SparkPID Contr
 public class lifter extends SubsystemBase {
     // defining Code varriables
     private boolean code_lifter_cal = false;
-    private double code_lifter_rotations = 0;
     // Defining Motor Controllers
     private final CANSparkMax lifter_left_motor =
         new CANSparkMax(Constants.IDs.lifter_left_motor, MotorType.kBrushless);
