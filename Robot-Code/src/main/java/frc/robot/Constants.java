@@ -57,16 +57,16 @@ public final class Constants {
     public static class lifter {
         public static final boolean rev_left                    = false;
         public static final boolean rev_right                   = false;
-        public static final double tuning_P                     = 0.010000;     // Proportional Variable
-        public static final double tuning_I                     = 0.000100;     // Intergral Variable
-        public static final double tuning_D                     = 1.000000;     // Derivative Variable
+        public static final double tuning_P                     = 0.250000;     // Proportional Variable
+        public static final double tuning_I                     = 0.000000;     // Intergral Variable
+        public static final double tuning_D                     = 0.000000;     // Derivative Variable
         public static final double tuning_Iz                    = 0.000000;     // Intergral Z Variable
         public static final double tuning_FF                    = 0.000000;     // Feed Forward Variable
         public static final double tuning_speedMin              =-0.50;         // Max Inward Motor Speed
         public static final double tuning_speedMax              = 0.50;         // Max Outward Motor Speed
         public static final double rotation_calibration         = 5.00;         // Rotations to lift climber before retracting it to calibrate
-        public static final double rotation_cal_speed           = 0.15;         // Speed at which calibration occurs
-        public static final double rotation_climb               = 0.00;         // How many rotations required to fully deply lifter
+        public static final double rotation_cal_speed           = 0.07;         // Speed at which calibration occurs
+        public static final double rotation_climb               = 45.00;         // How many rotations required to fully deply lifter
         public static final double rotation_OV_speed            = 5.00;         // Speed to run lifter at on over ride
     }
     public static class vision {
