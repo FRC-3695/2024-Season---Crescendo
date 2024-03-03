@@ -8,6 +8,7 @@ import com.revrobotics.RelativeEncoder;                 // REVLib Relative Encod
 import com.revrobotics.SparkPIDController;              // REVLib SparkPID Control
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class manipulator extends SubsystemBase {
@@ -96,9 +97,36 @@ public class manipulator extends SubsystemBase {
         shooter_left_PID.setFF(Constants.shooter.tuning_FF);          shooter_right_PID.setFF(Constants.shooter.tuning_FF);
     }
     private void dashboardSetup() {
-
+        SmartDashboard.putNumber("Shooter P", Constants.shooter.tuning_P);
+        SmartDashboard.putNumber("Shooter I", Constants.shooter.tuning_I);
+        SmartDashboard.putNumber("Shooter D", Constants.shooter.tuning_D);
+        SmartDashboard.putNumber("Shooter I Zone", Constants.shooter.tuning_Iz);
+        SmartDashboard.putNumber("Shooter FF", Constants.shooter.tuning_FF);
+        SmartDashboard.putNumber("Shooter RPM", Constants.shooter.tuning_RPM);
     }
     private void dashboardUpdate() {
-
+        if (Constants.shooter.tuning_P != SmartDashboard.getNumber("Shooter P", Constants.shooter.tuning_P)) {
+            Constants.shooter.tuning_P = SmartDashboard.getNumber("Shooter P", 0);
+            shooter_left_PID.setP(Constants.shooter.tuning_P);            shooter_right_PID.setP(Constants.shooter.tuning_P);
+        }
+        if (Constants.shooter.tuning_I != SmartDashboard.getNumber("Shooter I", Constants.shooter.tuning_I)) {
+            Constants.shooter.tuning_I = SmartDashboard.getNumber("Shooter I", 0);
+            shooter_left_PID.setI(Constants.shooter.tuning_I);            shooter_right_PID.setI(Constants.shooter.tuning_I);
+        }
+        if (Constants.shooter.tuning_D != SmartDashboard.getNumber("Shooter D", Constants.shooter.tuning_D)) {
+            Constants.shooter.tuning_D = SmartDashboard.getNumber("Shooter D", 0);
+            shooter_left_PID.setD(Constants.shooter.tuning_D);            shooter_right_PID.setD(Constants.shooter.tuning_D);
+        }
+        if (Constants.shooter.tuning_Iz != SmartDashboard.getNumber("Shooter I Zone", Constants.shooter.tuning_Iz)) {
+            Constants.shooter.tuning_Iz = SmartDashboard.getNumber("Shooter I Zone", 0);
+            shooter_left_PID.setIZone(Constants.shooter.tuning_Iz);       shooter_right_PID.setIZone(Constants.shooter.tuning_Iz);
+        }
+        if (Constants.shooter.tuning_FF != SmartDashboard.getNumber("Shooter FF", Constants.shooter.tuning_FF)) {
+            Constants.shooter.tuning_FF = SmartDashboard.getNumber("Shooter FF", 0);
+            shooter_left_PID.setFF(Constants.shooter.tuning_FF);          shooter_right_PID.setFF(Constants.shooter.tuning_FF);
+        }
+        if (Constants.shooter.tuning_RPM != SmartDashboard.getNumber("Shooter RPM", Constants.shooter.tuning_RPM)) {
+            Constants.shooter.tuning_RPM = SmartDashboard.getNumber("Shooter RPM", 0);
+        }
     }
 }
