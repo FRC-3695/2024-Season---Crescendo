@@ -32,7 +32,7 @@ public final class Constants {
         public static final int shooter_right_powerBus          = 0;  // PowerHub Port
     }
     public static class drive {
-        public static boolean drive_direction                   = false;  // To be used in future to offer drive reversing to driver
+        public static       boolean drive_direction             = false;  // To be used in future to offer drive reversing to driver
         public static final boolean drive_rev_left              = true;   // Reverses left drivetrain
         public static final boolean drive_rev_right             = false;  // Reverses right drivetrain
     }
