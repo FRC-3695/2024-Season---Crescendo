@@ -42,12 +42,12 @@ public final class Constants {
         public static final int controller_xBox_manip           = 1;            // DS USB ID
     }
     public static class shooter {
-        public static final double tuning_RPM                   = 4300;         // Motor RPM
-        public static final double tuning_P                     = 0.000000;     // Proportional Variable
-        public static final double tuning_I                     = 0.000000;     // Intergral Variable
-        public static final double tuning_D                     = 0.000000;     // Derivative Variable
-        public static final double tuning_Iz                    = 0.000000;     // Intergral Variable
-        public static final double tuning_FF                    = 0.000000;     // Feed Forward Variable
+        public static       double tuning_RPM                   = 4300;         // Motor RPM
+        public static       double tuning_P                     = 0.000000;     // Proportional Variable
+        public static       double tuning_I                     = 0.000000;     // Intergral Variable
+        public static       double tuning_D                     = 0.000000;     // Derivative Variable
+        public static       double tuning_Iz                    = 0.000000;     // Intergral Variable
+        public static       double tuning_FF                    = 0.000000;     // Feed Forward Variable
         public static final boolean rev_left                    = false;        // Reverse Left motor
         public static final boolean rev_right                   = false;        // Reverse Right motor
     }
