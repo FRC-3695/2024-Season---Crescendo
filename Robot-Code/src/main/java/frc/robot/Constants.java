@@ -23,7 +23,8 @@ public final class Constants {
         public static final int manipulator_feed_powerBus       = 0;  // PowerHub Port
         public static final int manipulator_posi_motor          = 8;  // CAN ID
         public static final int manipulator_posi_powerBus       = 0;  // PowerHub Port
-        public static final int manupilator_retract_sensor      = 2;  // Digital IO
+        public static final int manupilator_sensor_retract      = 2;  // Digital IO
+        public static final int manipulator_sensor_deploy       = 3;  // Digital IO
         // Shooter Motor Controllers
         public static final int shooter_left_motor              = 9;  // CAN ID
         public static final int shooter_left_powerBus           = 0;  // PowerHub Port
