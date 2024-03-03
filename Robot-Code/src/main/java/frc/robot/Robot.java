@@ -6,6 +6,7 @@ package frc.robot;
 import frc.robot.Constants;
 import frc.robot.BuildConstants;
 import frc.robot.subsystems.driveSys;
+import frc.robot.subsystems.lifter;
 import frc.robot.subsystems.vision;
 
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -31,6 +32,7 @@ public class Robot extends TimedRobot {
   private RobotContainer m_robotContainer;
   private driveSys robot_code_drive;
   private vision vision_code;
+  private lifter lifter_code;
 
   @Override
   public void robotInit() {
@@ -57,8 +59,7 @@ public class Robot extends TimedRobot {
 
     m_robotContainer = new RobotContainer();
     // Decleration of robot functions
-    robot_code_drive = new driveSys();
-    vision_code = new vision();
+    //vision_code = new vision();
 
   }
 
@@ -115,6 +116,8 @@ public class Robot extends TimedRobot {
     /*if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }*/
+    lifter_code = new lifter();
+    robot_code_drive = new driveSys();
   }
 
   @Override
