@@ -11,6 +11,9 @@ import com.revrobotics.RelativeEncoder;                 // REVLib Relative Encod
 import com.revrobotics.SparkPIDController;              // REVLib SparkPID Control
 
 public class lifter extends SubsystemBase {
+    // defining Code varriables
+    private boolean code_lifter_cal = false;
+    private double code_lifter_rotations = 0;
     // Defining Motor Controllers
     private final CANSparkMax lifter_left_motor =
         new CANSparkMax(Constants.IDs.lifter_left_motor, MotorType.kBrushless);
@@ -41,17 +44,23 @@ public class lifter extends SubsystemBase {
     }
     @Override
     public void periodic() {  // Periodic to lock onto controller buttons assigned to secondary controller
-        if (drivestation_operator.getRightBumper()) { // Lifter Deployment Triggered
-            armDeploy();
-        } else {  // Retract or Keep Lifter retracted
-            armRetract();
+        if (code_lifter_cal) {
+            if (drivestation_operator.getRightBumper()) { // Lifter Deployment Triggered
+                armDeploy();
+            } else {  // Retract or Keep Lifter retracted
+                armRetract();
+            }
+        } else {
+            System.out.println("Pending Lifter Calibration");
         }
     }
     private void armDeploy() {  // Extends Lifter out to latch onto chain
-
+        lifter_left_PID.setReference(Constants.lifter.rotation_climb, CANSparkMax.ControlType.kPosition);
+        lifter_right_PID.setReference(Constants.lifter.rotation_climb, CANSparkMax.ControlType.kPosition);
     }
     private void armRetract() {  // Retracts Lifter in body of robot
-
+        lifter_left_PID.setReference(0, CANSparkMax.ControlType.kPosition);
+        lifter_right_PID.setReference(0, CANSparkMax.ControlType.kPosition);
     }
     private void setupMotors() {  // Sets up motors with reversing and PID Data
         // Restore Factory Defaults
@@ -73,26 +82,33 @@ public class lifter extends SubsystemBase {
         lifter_right_PID.setOutputRange(Constants.lifter.tuning_speedMin, Constants.lifter.tuning_speedMax);
     }
     private void zeroEncoders() { // Re-Homes lifter and Zeros motor controller's encoder's
-        if(!lifter_left_DIO.get() || !lifter_right_DIO.get()) { // If already home
+        
+        if(!lifter_left_DIO.get() && !lifter_right_DIO.get()) { // If already home
             lifter_left_encoder.setPosition(0);
             lifter_right_encoder.setPosition(0);
+            code_lifter_cal = true;
         } else {
             lifter_left_PID.setReference(Constants.lifter.rotation_calibration, CANSparkMax.ControlType.kPosition);
             lifter_right_PID.setReference(Constants.lifter.rotation_calibration, CANSparkMax.ControlType.kPosition);
-            while(true) {
+            while(true) { 
                 if (!lifter_left_DIO.get()) {  // Switch is engaged
                     lifter_left_motor.set(0);
-                    lifter_left_encoder.setPosition(0);
                 } else {  // Switch is not engaged
-                    lifter_left_motor.set(Constants.lifter.rotation_cal_speed);
+                    lifter_left_motor.set(-Constants.lifter.rotation_cal_speed);
                 }
                 if (!lifter_right_DIO.get()) {  // Switch is engaged
                     lifter_right_motor.set(0);
-                    lifter_right_encoder.setPosition(0);
                 } else {  // Switch is not engaged
-                    lifter_right_motor.set(Constants.lifter.rotation_cal_speed);
+                    lifter_right_motor.set(-Constants.lifter.rotation_cal_speed);
                 }
-                if (!lifter_left_DIO.get() || !lifter_right_DIO.get()) {break;}  // Both Switches become Engaged
+                if (!lifter_left_DIO.get() && !lifter_right_DIO.get()) {
+                    lifter_left_motor.set(0);
+                    lifter_right_motor.set(0);
+                    lifter_left_encoder.setPosition(0);
+                    lifter_right_encoder.setPosition(0);
+                    code_lifter_cal = true;
+                    break;
+                }  // Both Switches become Engaged
             }
         }
     }
