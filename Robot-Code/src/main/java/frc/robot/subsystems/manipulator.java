@@ -35,8 +35,10 @@ public class manipulator extends SubsystemBase {
     private final SparkPIDController shooter_right_PID =
         shooter_right_motor.getPIDController();
     // Defining Digital IO
-    private final DigitalInput intake_home_DIO =
-        new DigitalInput(Constants.IDs.manupilator_retract_sensor);
+    private final DigitalInput intake_retract_DIO =
+        new DigitalInput(Constants.IDs.manupilator_sensor_retract);
+    private final DigitalInput intake_deploy_DIO =
+        new DigitalInput(Constants.IDs.manipulator_sensor_deploy);
     
     public manipulator () { // Core Function
         intakeSetup();
