@@ -32,9 +32,9 @@ public final class Constants {
         public static final int shooter_right_powerBus          = 0;  // PowerHub Port
     }
     public static class drive {
-        public static       boolean drive_direction             = false;  // To be used in future to offer drive reversing to driver
-        public static final boolean drive_rev_left              = true;   // Reverses left drivetrain
-        public static final boolean drive_rev_right             = false;  // Reverses right drivetrain
+        public static       boolean direction             = false;  // To be used in future to offer drive reversing to driver
+        public static final boolean rev_left              = true;   // Reverses left drivetrain
+        public static final boolean rev_right             = false;  // Reverses right drivetrain
     }
     public static class operator {
         public static final int controller_xBox_driver          = 0;            // DS USB ID
@@ -53,20 +53,21 @@ public final class Constants {
     }
     public static class intake {
         public static final double rotation_deployment          = 0.000000;     // Amount of rotation till intake is completly deployed
+        public static final double rotation_cal                 = 0.00;
     }
     public static class lifter {
         public static final boolean rev_left                    = false;
         public static final boolean rev_right                   = false;
-        public static final double tuning_P                     = 0.250000;     // Proportional Variable
+        public static final double tuning_P                     = 0.350000;     // Proportional Variable
         public static final double tuning_I                     = 0.000000;     // Intergral Variable
         public static final double tuning_D                     = 0.000000;     // Derivative Variable
         public static final double tuning_Iz                    = 0.000000;     // Intergral Z Variable
         public static final double tuning_FF                    = 0.000000;     // Feed Forward Variable
         public static final double tuning_speedMin              =-0.50;         // Max Inward Motor Speed
-        public static final double tuning_speedMax              = 0.50;         // Max Outward Motor Speed
+        public static final double tuning_speedMax              = 0.80;         // Max Outward Motor Speed
         public static final double rotation_calibration         = 5.00;         // Rotations to lift climber before retracting it to calibrate
         public static final double rotation_cal_speed           = 0.07;         // Speed at which calibration occurs
-        public static final double rotation_climb               = 45.00;         // How many rotations required to fully deply lifter
+        public static final double rotation_climb               = 58.00;         // How many rotations required to fully deply lifter
         public static final double rotation_OV_speed            = 5.00;         // Speed to run lifter at on over ride
     }
     public static class vision {
@@ -108,7 +109,7 @@ public final class Constants {
             /* 15 */ "B - Stage (Left)",
             /* 16 */ "B - Stage (Right)",
         };
-        public static final String frontCamera                  = "";       // Front of Robot Limelight3
+        public static final String frontCamera                  = "limelight";       // Front of Robot Limelight3
         public static final String rearCamera                   = "";       // Front of Robot Limelight2
     }   
 }

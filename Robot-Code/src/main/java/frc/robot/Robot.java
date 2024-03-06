@@ -3,20 +3,28 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot;
-import frc.robot.Constants;
-import frc.robot.BuildConstants;
-import frc.robot.subsystems.driveSys;
-import frc.robot.subsystems.lifter;
-import frc.robot.subsystems.vision;
-
-import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Commands;
-import edu.wpi.first.wpilibj2.command.CommandScheduler;
-// Adds Smart Dashboard Capabilities for Autonomous chooser
+// Constants libraries
+import frc.robot.Constants;                             // Cross Robot Varriables Centralized
+import frc.robot.BuildConstants;                        // Generated on Each Build for Tracking Purposes
+// Operations for robot
+import frc.robot.systems.drive;
+import frc.robot.systems.lifter;
+import frc.robot.systems.manipulator;
+import frc.robot.systems.vision;
+// Lib for SparkMax Motor Controllers
+import com.revrobotics.CANSparkMax;                     // SparkMAX CAN Control Map and Watchdog
+import com.revrobotics.CANSparkLowLevel.MotorType;      // MotorType Definitions
+import com.revrobotics.RelativeEncoder;                 // REVLib Relative Encoder
+import com.revrobotics.SparkPIDController;              // REVLib SparkPID Control
+// Adds Smart Dashboard Capabilities & Autonomous chooser
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
+// WPILib  Libraries
+import edu.wpi.first.wpilibj.TimedRobot;                // Support for Timed code layout
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;   // Introducing Prebuilt drivecontroller
+import edu.wpi.first.wpilibj.XboxController;            // Support for Xbox Controller
+import edu.wpi.first.wpilibj.DigitalInput;              // RoboRio Digital Input Control
+import edu.wpi.first.wpilibj2.command.CommandScheduler; // Gives support for scheduling and descheduling tasks in Scheduler
 
 public class Robot extends TimedRobot {
   // Creation of Autonomous functions IDs and Varriables
@@ -27,13 +35,68 @@ public class Robot extends TimedRobot {
   private String dash_autoSelected;
   private final SendableChooser<String> dash_autoOptions = new SendableChooser<>();
 
-  private Command m_autonomousCommand;
-  private Command drivePeriodic;
-  private RobotContainer m_robotContainer;
-  private driveSys robot_code_drive;
-  private vision vision_code;
-  private lifter lifter_code;
-
+  // Defining Motors
+  public static final CANSparkMax drive_leftMaster = 
+    new CANSparkMax(Constants.IDs.drive_leftFront_motor, MotorType.kBrushless);
+  public static final CANSparkMax drive_leftSlave = 
+    new CANSparkMax(Constants.IDs.drive_leftRear_motor, MotorType.kBrushless);
+  public static final CANSparkMax drive_rightMaster = 
+    new CANSparkMax(Constants.IDs.drive_rightFront_motor, MotorType.kBrushless);
+  public static final CANSparkMax drive_rightSlave = 
+    new CANSparkMax(Constants.IDs.drive_rightRear_motor, MotorType.kBrushless);
+  public static final CANSparkMax lifter_left_motor =
+    new CANSparkMax(Constants.IDs.lifter_left_motor, MotorType.kBrushless);
+  public static final CANSparkMax lifter_right_motor =
+    new CANSparkMax(Constants.IDs.lifter_right_motor, MotorType.kBrushless);
+  public static final CANSparkMax intake_position_motor =
+    new CANSparkMax(Constants.IDs.manipulator_posi_motor, MotorType.kBrushless);
+  public static final CANSparkMax intake_feeder_motor =
+    new CANSparkMax(Constants.IDs.manipulator_feed_motor, MotorType.kBrushed);
+  public static final CANSparkMax shooter_left_motor =
+    new CANSparkMax(Constants.IDs.shooter_left_motor, MotorType.kBrushless);
+  public static final CANSparkMax shooter_right_motor =
+    new CANSparkMax(Constants.IDs.shooter_right_motor, MotorType.kBrushless);
+  // Defining Encoders for Functions
+  public static RelativeEncoder drive_left_encoder =
+    drive_leftMaster.getEncoder();
+  public static RelativeEncoder drive_right_encoder =
+    drive_rightMaster.getEncoder();
+  public static RelativeEncoder lifter_left_encoder =
+    lifter_left_motor.getEncoder();
+  public static RelativeEncoder lifter_right_encoder =
+    lifter_right_motor.getEncoder();
+  public static RelativeEncoder intake_position_encoder =
+    intake_position_motor.getEncoder();
+  public static RelativeEncoder shooter_left_encoder =
+    shooter_left_motor.getEncoder();
+  public static RelativeEncoder shooter_right_encoder =
+    shooter_right_motor.getEncoder();
+  // Defining Motor PIDs
+  public static final SparkPIDController lifter_left_PID =
+    lifter_left_motor.getPIDController();
+  public static final SparkPIDController lifter_right_PID =
+    lifter_right_motor.getPIDController();
+  public static final SparkPIDController shooter_left_PID =
+    shooter_left_motor.getPIDController();
+  public static final SparkPIDController shooter_right_PID =
+    shooter_right_motor.getPIDController();
+  // Defining Digital IO
+  public static final DigitalInput lifter_left_DIO =
+    new DigitalInput(Constants.IDs.lifter_left_sensor);
+  public static final DigitalInput lifter_right_DIO =
+    new DigitalInput(Constants.IDs.lifter_right_sensor);
+  public static final DigitalInput intake_retract_DIO =
+    new DigitalInput(Constants.IDs.manupilator_sensor_retract);
+  public static final DigitalInput intake_deploy_DIO =
+    new DigitalInput(Constants.IDs.manipulator_sensor_deploy);
+  // Defining Driver Controller
+  public static final XboxController drivestation_driver =
+    new XboxController(Constants.operator.controller_xBox_driver);
+  public static final XboxController drivestation_operator =
+    new XboxController(Constants.operator.controller_xBox_manip);
+  // Drive Requirements
+  public static final DifferentialDrive drive_difDrive =
+    new DifferentialDrive(Robot.drive_leftMaster::set, Robot.drive_rightMaster::set);
   @Override
   public void robotInit() {
     // Prints codes GIT commit version, date, and build date
@@ -56,11 +119,9 @@ public class Robot extends TimedRobot {
     dash_autoOptions.addOption("Speaker Shoot and Move Over", dash_auto_3);
     dash_autoOptions.addOption("Amp Dump and Move Over", dash_auto_4);
     SmartDashboard.putData("Auto choices", dash_autoOptions);
-
-    m_robotContainer = new RobotContainer();
-    // Decleration of robot functions
-    //vision_code = new vision();
-
+    // Brings Vision System onto Dashboard
+    vision.startup();
+    drive.start_up();
   }
 
   @Override
@@ -80,11 +141,6 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     dash_autoSelected = dash_autoOptions.getSelected(); //Gets Selected Auto Command from DriverStation
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
-
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.schedule();
-    }
   }
 
   @Override
@@ -113,15 +169,13 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    /*if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
-    }*/
-    lifter_code = new lifter();
-    robot_code_drive = new driveSys();
+    lifter.setup();
   }
 
   @Override
   public void teleopPeriodic() {
+    drive.controlPeriodic();
+    lifter.controlPeriodic();
   }
 
   @Override
@@ -129,11 +183,13 @@ public class Robot extends TimedRobot {
 
   @Override
   public void testInit() {
-    CommandScheduler.getInstance().cancelAll();
+    lifter.setup();
   }
 
   @Override
-  public void testPeriodic() {}
+  public void testPeriodic() {
+    lifter.controlPeriodic();
+  }
 
   @Override
   public void testExit() {}
