@@ -15,9 +15,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;    // System to be extended
 
 
 
-
-
 public class vision extends SubsystemBase{
+
 
 
     static CANSparkMax leftMaster;
@@ -29,6 +28,7 @@ public class vision extends SubsystemBase{
     RelativeEncoder leftSlaveEncoder;
     RelativeEncoder rightMasterEncoder;
     RelativeEncoder rightSlaveEncoder;
+
 
 
     public vision() {
@@ -78,6 +78,7 @@ public class vision extends SubsystemBase{
         rightMasterEncoder = rightMaster.getEncoder();
         rightSlaveEncoder = rightSlave.getEncoder();
 
+
         System.out.println(leftMasterEncoder);
         System.out.println(leftSlaveEncoder);
         System.out.println(rightMasterEncoder);
@@ -89,14 +90,17 @@ public class vision extends SubsystemBase{
         //Basic Functionality Tests
        //this works: first number is y, second number is x
         if (SmartDashboard.getNumber("Limelightx", x) == Constants.vision.targeting_april_alignment[4][0]) {
-            System.out.println("DictionaryWorks!");    
-            
-            double currentMotorPosition = leftMasterEncoder.getPosition();
-        
+            System.out.println("DictionaryWorks!");  
+
+
+           double currentMotorPosition = leftMasterEncoder.getPosition();
                 //tweak depending on how many count per rotation there is.
             double targetMotorPosition = currentMotorPosition + 6 * 3000;
-
             leftMaster.getPIDController().setReference(targetMotorPosition, ControlType.kPosition);
+
+
+
+
         }
 
         if (SmartDashboard.getNumber("Limelightx", x) <= 7 && SmartDashboard.getNumber("Limelightx", x) >= 6) {
@@ -106,8 +110,5 @@ public class vision extends SubsystemBase{
              System.out.println("Works!");
         }
     }
-
-      
-        
     
 } 
