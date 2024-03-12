@@ -72,23 +72,28 @@ public class testingAnHealth {
     private static final void shooter_dashboard_renew() {
         if (Constants.shooter.tuning_P != SmartDashboard.getNumber("Shooter P", Constants.shooter.tuning_P)) {
             Constants.shooter.tuning_P = SmartDashboard.getNumber("Shooter P", 0);
-            Robot.shooter_left_PID.setP(Constants.shooter.tuning_P);            Robot.shooter_right_PID.setP(Constants.shooter.tuning_P);
+            Robot.shooter_left_PID.setP(Constants.shooter.tuning_P);            
+            Robot.shooter_right_PID.setP(Constants.shooter.tuning_P);
         }
         if (Constants.shooter.tuning_I != SmartDashboard.getNumber("Shooter I", Constants.shooter.tuning_I)) {
             Constants.shooter.tuning_I = SmartDashboard.getNumber("Shooter I", 0);
-            Robot.shooter_left_PID.setI(Constants.shooter.tuning_I);            Robot.shooter_right_PID.setI(Constants.shooter.tuning_I);
+            Robot.shooter_left_PID.setI(Constants.shooter.tuning_I);            
+            Robot.shooter_right_PID.setI(Constants.shooter.tuning_I);
         }
         if (Constants.shooter.tuning_D != SmartDashboard.getNumber("Shooter D", Constants.shooter.tuning_D)) {
             Constants.shooter.tuning_D = SmartDashboard.getNumber("Shooter D", 0);
-            Robot.shooter_left_PID.setD(Constants.shooter.tuning_D);            Robot.shooter_right_PID.setD(Constants.shooter.tuning_D);
+            Robot.shooter_left_PID.setD(Constants.shooter.tuning_D);            
+            Robot.shooter_right_PID.setD(Constants.shooter.tuning_D);
         }
         if (Constants.shooter.tuning_Iz != SmartDashboard.getNumber("Shooter I Zone", Constants.shooter.tuning_Iz)) {
             Constants.shooter.tuning_Iz = SmartDashboard.getNumber("Shooter I Zone", 0);
-            Robot.shooter_left_PID.setIZone(Constants.shooter.tuning_Iz);       Robot.shooter_right_PID.setIZone(Constants.shooter.tuning_Iz);
+            Robot.shooter_left_PID.setIZone(Constants.shooter.tuning_Iz);       
+            Robot.shooter_right_PID.setIZone(Constants.shooter.tuning_Iz);
         }
         if (Constants.shooter.tuning_FF != SmartDashboard.getNumber("Shooter FF", Constants.shooter.tuning_FF)) {
             Constants.shooter.tuning_FF = SmartDashboard.getNumber("Shooter FF", 0);
-            Robot.shooter_left_PID.setFF(Constants.shooter.tuning_FF);          Robot.shooter_right_PID.setFF(Constants.shooter.tuning_FF);
+            Robot.shooter_left_PID.setFF(Constants.shooter.tuning_FF);          
+            Robot.shooter_right_PID.setFF(Constants.shooter.tuning_FF);
         }
         if (Constants.shooter.tuning_RPM != SmartDashboard.getNumber("Shooter RPM", Constants.shooter.tuning_RPM)) {
             Constants.shooter.tuning_RPM = SmartDashboard.getNumber("Shooter RPM", 0);
