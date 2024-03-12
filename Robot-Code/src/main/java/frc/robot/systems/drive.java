@@ -3,15 +3,9 @@ import frc.robot.Robot;                                 // Core Robot
 import frc.robot.Constants;                             // Cross Robot Varriables Centralized
 
 import edu.wpi.first.math.MathUtil;                     // Mathematics tools
-import edu.wpi.first.math.filter.SlewRateLimiter;       // Calculates a rate over time
 import edu.wpi.first.util.sendable.SendableRegistry;
 
 public final class drive {
-    // Slew-Rate Limiters
-    private static SlewRateLimiter slewLim_drive =
-        new SlewRateLimiter(Constants.drive.slew_drv);
-    private static SlewRateLimiter slewLim_turn =
-        new SlewRateLimiter(Constants.drive.slew_turn);
     private drive () {}
     public static void controlPeriodic() {              // Periodic to update drive system states
         Robot.drive_difDrive.feed();
