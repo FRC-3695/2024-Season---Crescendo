@@ -49,11 +49,16 @@ public class lifter {
         Robot.lifter_left_PID.setFeedbackDevice(Robot.lifter_left_encoder);
         Robot.lifter_right_PID.setFeedbackDevice(Robot.lifter_right_encoder);
         // Set PIDs for each PID
-        Robot.lifter_left_PID.setP(Constants.lifter.tuning_P);            Robot.lifter_right_PID.setP(Constants.lifter.tuning_P);
-        Robot.lifter_left_PID.setI(Constants.lifter.tuning_I);            Robot.lifter_right_PID.setI(Constants.lifter.tuning_I);
-        Robot.lifter_left_PID.setD(Constants.lifter.tuning_D);            Robot.lifter_right_PID.setD(Constants.lifter.tuning_D);
-        Robot.lifter_left_PID.setIZone(Constants.lifter.tuning_Iz);       Robot.lifter_right_PID.setIZone(Constants.lifter.tuning_Iz);
-        Robot.lifter_left_PID.setFF(Constants.lifter.tuning_FF);          Robot.lifter_right_PID.setFF(Constants.lifter.tuning_FF);
+        Robot.lifter_left_PID.setP(Constants.lifter.tuning_P);            
+        Robot.lifter_right_PID.setP(Constants.lifter.tuning_P);
+        Robot.lifter_left_PID.setI(Constants.lifter.tuning_I);            
+        Robot.lifter_right_PID.setI(Constants.lifter.tuning_I);
+        Robot.lifter_left_PID.setD(Constants.lifter.tuning_D);            
+        Robot.lifter_right_PID.setD(Constants.lifter.tuning_D);
+        Robot.lifter_left_PID.setIZone(Constants.lifter.tuning_Iz);       
+        Robot.lifter_right_PID.setIZone(Constants.lifter.tuning_Iz);
+        Robot.lifter_left_PID.setFF(Constants.lifter.tuning_FF);          
+        Robot.lifter_right_PID.setFF(Constants.lifter.tuning_FF);
         Robot.lifter_left_PID.setOutputRange(Constants.lifter.tuning_speedMin, Constants.lifter.tuning_speedMax);        
         Robot.lifter_right_PID.setOutputRange(Constants.lifter.tuning_speedMin, Constants.lifter.tuning_speedMax);
     }
