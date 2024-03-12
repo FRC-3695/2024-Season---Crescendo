@@ -55,7 +55,6 @@ public class testingAnHealth {
                 shooter_static_run();
                 break;
             default:  // No Selection Made for Mode provided
-                System.out.println("No Testing System Selected");
                 break;
         }
     }

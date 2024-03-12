@@ -4,8 +4,8 @@
 
 package frc.robot;
 // Constants libraries
-import frc.robot.Constants;                             // Cross Robot Varriables Centralized
-import frc.robot.BuildConstants;                        // Generated on Each Build for Tracking Purposes
+//- import frc.robot.Constants;                             // Cross Robot Varriables Centralized
+//- import frc.robot.BuildConstants;                        // Generated on Each Build for Tracking Purposes
 // Operations for robot
 import frc.robot.systems.drive;
 import frc.robot.systems.lifter;
@@ -174,11 +174,13 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     lifter.setup();
+    manipulator.motorSetup();
   }
   @Override
   public void teleopPeriodic() {
     drive.controlPeriodic();
     lifter.controlPeriodic();
+    manipulator.controlPeriodic();
   }
   @Override
   public void teleopExit() {}
@@ -192,4 +194,12 @@ public class Robot extends TimedRobot {
   }
   @Override
   public void testExit() {}
+  @Override
+  public void simulationInit() {
+    drive.startup();
+  }
+  @Override
+  public void simulationPeriodic() {
+    drive.controlPeriodic();
+  }
 }
