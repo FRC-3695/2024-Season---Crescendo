@@ -10,12 +10,13 @@ import frc.robot.BuildConstants;                        // Generated on Each Bui
 import frc.robot.systems.drive;
 import frc.robot.systems.lifter;
 import frc.robot.systems.manipulator;
-import frc.robot.systems.vision;
+import frc.robot.systems.testingAnHealth;
 // Lib for SparkMax Motor Controllers
 import com.revrobotics.CANSparkMax;                     // SparkMAX CAN Control Map and Watchdog
 import com.revrobotics.CANSparkLowLevel.MotorType;      // MotorType Definitions
 import com.revrobotics.RelativeEncoder;                 // REVLib Relative Encoder
 import com.revrobotics.SparkPIDController;              // REVLib SparkPID Control
+import com.revrobotics.SparkRelativeEncoder;            // REVLib RelativeEncoder Reporting from device attached to SparkDevice
 // Adds Smart Dashboard Capabilities & Autonomous chooser
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -67,6 +68,8 @@ public class Robot extends TimedRobot {
     lifter_right_motor.getEncoder();
   public static RelativeEncoder intake_position_encoder =
     intake_position_motor.getEncoder();
+  public static RelativeEncoder intake_feeder_encoder = 
+    intake_feeder_motor.getEncoder(SparkRelativeEncoder.Type.kQuadrature, 1024);
   public static RelativeEncoder shooter_left_encoder =
     shooter_left_motor.getEncoder();
   public static RelativeEncoder shooter_right_encoder =
@@ -80,6 +83,10 @@ public class Robot extends TimedRobot {
     shooter_left_motor.getPIDController();
   public static final SparkPIDController shooter_right_PID =
     shooter_right_motor.getPIDController();
+  public static final SparkPIDController intake_position_PID =
+    intake_position_motor.getPIDController();
+  public static final SparkPIDController intake_feeder_PID =
+    intake_feeder_motor.getPIDController();
   // Defining Digital IO
   public static final DigitalInput lifter_left_DIO =
     new DigitalInput(Constants.IDs.lifter_left_sensor);
@@ -119,30 +126,24 @@ public class Robot extends TimedRobot {
     dash_autoOptions.addOption("Speaker Shoot and Move Over", dash_auto_3);
     dash_autoOptions.addOption("Amp Dump and Move Over", dash_auto_4);
     SmartDashboard.putData("Auto choices", dash_autoOptions);
-    // Brings Vision System onto Dashboard
-    vision.startup();
-    drive.start_up();
+    // -----------------------------------------------------------
+    drive.startup();
+    manipulator.startup();
   }
-
   @Override
   public void robotPeriodic() {
     CommandScheduler.getInstance().run();
   }
-
   @Override
   public void disabledInit() {}
-
   @Override
   public void disabledPeriodic() {}
-
   @Override
   public void disabledExit() {}
-
   @Override
   public void autonomousInit() {
     dash_autoSelected = dash_autoOptions.getSelected(); //Gets Selected Auto Command from DriverStation
   }
-
   @Override
   public void autonomousPeriodic() {
     switch(dash_autoSelected){
@@ -163,34 +164,27 @@ public class Robot extends TimedRobot {
         break;
     }
   }
-
   @Override
   public void autonomousExit() {}
-
   @Override
   public void teleopInit() {
     lifter.setup();
   }
-
   @Override
   public void teleopPeriodic() {
     drive.controlPeriodic();
     lifter.controlPeriodic();
   }
-
   @Override
   public void teleopExit() {}
-
   @Override
   public void testInit() {
-    lifter.setup();
+    testingAnHealth.setup();
   }
-
   @Override
   public void testPeriodic() {
-    lifter.controlPeriodic();
+    testingAnHealth.periodic();
   }
-
   @Override
   public void testExit() {}
 }
