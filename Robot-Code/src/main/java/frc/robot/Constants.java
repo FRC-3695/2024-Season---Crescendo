@@ -34,7 +34,7 @@ public final class Constants {
         public static final int shooter_right_powerBus          = 0;  // PowerHub Port
     }
     public static class drive {
-        public static final double  slew_drv                    = 0.3;    // Slew-Rate Limit for Acceletation
+        public static final double  slew_drv                    = 1;    // Slew-Rate Limit for Acceletation
         public static final double  slew_turn                   = 0.5;    // Slew-Rate Limit for Turning
         public static       boolean rev_DT                      = false;  // To be used in future to offer drive reversing to driver
         public static final boolean rev_left                    = true;   // Reverses left drivetrain
@@ -42,8 +42,9 @@ public final class Constants {
     }
     public static class operator {
         public static final int controller_xBox_driver          = 0;            // DS USB ID
-        public static final double tuning_driver_deadband       = 0.15;         // DeadBand for Driver Joysticks and Triggers
+        public static final double tuning_driver_deadband       = 0.07;         // DeadBand for Driver Joysticks and Triggers
         public static final int controller_xBox_manip           = 1;            // DS USB ID
+        public static final double tuning_manip_deadband        = 0.10;         // DeadBand for Manip Joysticks and Triggers
     }
     public static class shooter {
         public static final double slew_spinUp                  = 0.75;         // Forced Graceful SpinUp to prevent low current events on robot
@@ -76,12 +77,13 @@ public final class Constants {
         public static       double feed_tuning_D                = 0.000;        // Derivative Variable
         public static       double feed_tuning_Iz               = 0.000;        // Intergral Variable
         public static       double feed_tuning_FF               = 0.000;        // Feed Forward Variable
-        public static       double feed_tuning_speedMin         =-0.50;         // Max Retract Motor Speed
-        public static       double feed_tuning_speedMax         = 0.80;         // Max Deploy Motor Speed
+        public static       double feed_tuning_speedMin         = 0.60;         // Max Injest Motor Speed
+        public static       double feed_tuning_speedMax         = 0.80;         // Max Eject Motor Speed
         public static final double position_floor               = 0.000;        //
         public static final double position_feeder              = 0.000;        //
         public static final double position_shooting            = 0.000;        //
         public static final double rotation_retract_unCalSpd    = 0.00;         // Speed to run intake position motor when out of calibration to bring it back into calibration
+        public static final double intake_tuning_clamp          = 2;            // Clamps reactivity of intake movement
     }
     public static class lifter {
         public static final boolean rev_left                    = false;
@@ -95,7 +97,7 @@ public final class Constants {
         public static       double tuning_speedMax              = 0.50;         // Max Outward Motor Speed
         public static final double rotation_calibration         = 5.00;         // Rotations to lift climber before retracting it to calibrate
         public static final double rotation_cal_speed           = 0.10;         // Speed at which calibration occurs
-        public static final double rotation_climb               = 48.00;        // How many rotations required to fully deply lifter
+        public static final double rotation_climb               = 65.00;        // How many rotations required to fully deply lifter
         public static final double rotation_OV_speed            = 5.00;         // Speed to run lifter at on over ride
     }
     public static class vision {
