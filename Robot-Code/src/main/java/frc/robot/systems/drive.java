@@ -42,6 +42,11 @@ public final class drive {
         // Setting PWM safety for Drivetrain and Motor safety time out
         Robot.drive_difDrive.setSafetyEnabled(false);
         Robot.drive_difDrive.setExpiration(1);
+        // Set acceleration
+        Robot.drive_leftMaster.setClosedLoopRampRate(Constants.drive.slew_drv);
+        Robot.drive_leftSlave.setClosedLoopRampRate(Constants.drive.slew_drv);
+        Robot.drive_rightMaster.setClosedLoopRampRate(Constants.drive.slew_drv);
+        Robot.drive_rightSlave.setClosedLoopRampRate(Constants.drive.slew_drv);
     }
     private static void initFollowers() {               // Within this function followers will be defined where a master and slave controller relationship will be defined
         // Setting Followers
