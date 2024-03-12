@@ -15,7 +15,7 @@ public class lifter {
     }
     public static final void controlPeriodic() {        // Periodic function for scheduler
         if (code_lifter_cal) {
-            if (Robot.drivestation_operator.getRightBumper()) { // Lifter Deployment Triggered
+            if (Robot.drivestation_operator.getLeftBumper()) { // Lifter Deployment Triggered
                 reach();
             } else {  // Retract or Keep Lifter retracted
                 climb();
@@ -58,25 +58,27 @@ public class lifter {
         Robot.lifter_right_PID.setOutputRange(Constants.lifter.tuning_speedMin, Constants.lifter.tuning_speedMax);
     }
     private static void zero() {                        // Re-Homes lifter and Zeros motor controller's encoder's
-        if(!Robot.lifter_left_DIO.get() && !Robot.lifter_right_DIO.get()) { // If already home
+        if(Robot.lifter_left_DIO.get() && Robot.lifter_right_DIO.get()) { // If already home
             Robot.lifter_left_encoder.setPosition(0);
             Robot.lifter_right_encoder.setPosition(0);
             code_lifter_cal = true;
         } else {
-            Robot.lifter_left_PID.setReference(Constants.lifter.rotation_calibration, CANSparkMax.ControlType.kPosition);
-            Robot.lifter_right_PID.setReference(Constants.lifter.rotation_calibration, CANSparkMax.ControlType.kPosition);
+            while(Robot.lifter_left_DIO.get() || Robot.lifter_right_DIO.get()) { // If already home
+                Robot.lifter_left_motor.set(Constants.lifter.rotation_cal_speed);
+                Robot.lifter_right_motor.set(Constants.lifter.rotation_cal_speed);
+            }
             while(true) { 
-                if (!Robot.lifter_left_DIO.get()) {  // Switch is engaged
+                if (Robot.lifter_left_DIO.get()) {  // Switch is engaged
                     Robot.lifter_left_motor.set(0);
                 } else {  // Switch is not engaged
                     Robot.lifter_left_motor.set(-Constants.lifter.rotation_cal_speed);
                 }
-                if (!Robot.lifter_right_DIO.get()) {  // Switch is engaged
+                if (Robot.lifter_right_DIO.get()) {  // Switch is engaged
                     Robot.lifter_right_motor.set(0);
                 } else {  // Switch is not engaged
                     Robot.lifter_right_motor.set(-Constants.lifter.rotation_cal_speed);
                 }
-                if (!Robot.lifter_left_DIO.get() && !Robot.lifter_right_DIO.get()) {
+                if (Robot.lifter_left_DIO.get() && Robot.lifter_right_DIO.get()) {
                     Robot.lifter_left_motor.set(0);
                     Robot.lifter_right_motor.set(0);
                     Robot.lifter_left_encoder.setPosition(0);

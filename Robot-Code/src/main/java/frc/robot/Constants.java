@@ -25,6 +25,8 @@ public final class Constants {
         public static final int manipulator_posi_powerBus       = 0;  // PowerHub Port
         public static final int manupilator_sensor_retract      = 2;  // Digital IO
         public static final int manipulator_sensor_deploy       = 3;  // Digital IO
+        public static final int manipulator_sensor_intake_L     = 4;  // Digital IO
+        public static final int manipulator_sensor_intake_R     = 5;  // Digital IO
         // Shooter Motor Controllers
         public static final int shooter_left_motor              = 9;  // CAN ID
         public static final int shooter_left_powerBus           = 0;  // PowerHub Port
@@ -32,9 +34,11 @@ public final class Constants {
         public static final int shooter_right_powerBus          = 0;  // PowerHub Port
     }
     public static class drive {
-        public static       boolean direction             = false;  // To be used in future to offer drive reversing to driver
-        public static final boolean rev_left              = true;   // Reverses left drivetrain
-        public static final boolean rev_right             = false;  // Reverses right drivetrain
+        public static final double  slew_drv                    = 0.3;    // Slew-Rate Limit for Acceletation
+        public static final double  slew_turn                   = 0.5;    // Slew-Rate Limit for Turning
+        public static       boolean rev_DT                      = false;  // To be used in future to offer drive reversing to driver
+        public static final boolean rev_left                    = true;   // Reverses left drivetrain
+        public static final boolean rev_right                   = false;  // Reverses right drivetrain
     }
     public static class operator {
         public static final int controller_xBox_driver          = 0;            // DS USB ID
@@ -42,32 +46,56 @@ public final class Constants {
         public static final int controller_xBox_manip           = 1;            // DS USB ID
     }
     public static class shooter {
+        public static final double slew_spinUp                  = 0.75;         // Forced Graceful SpinUp to prevent low current events on robot
         public static       double tuning_RPM                   = 4300;         // Motor RPM
-        public static       double tuning_P                     = 0.000000;     // Proportional Variable
-        public static       double tuning_I                     = 0.000000;     // Intergral Variable
-        public static       double tuning_D                     = 0.000000;     // Derivative Variable
-        public static       double tuning_Iz                    = 0.000000;     // Intergral Variable
-        public static       double tuning_FF                    = 0.000000;     // Feed Forward Variable
+        public static       double tuning_P                     = 0.75;        // Proportional Variable
+        public static       double tuning_I                     = 0.000;        // Intergral Variable
+        public static       double tuning_D                     = 0.03;        // Derivative Variable
+        public static       double tuning_Iz                    = 0.000;        // Intergral Variable
+        public static       double tuning_FF                    = 0.000;        // Feed Forward Variable
         public static final boolean rev_left                    = false;        // Reverse Left motor
-        public static final boolean rev_right                   = false;        // Reverse Right motor
+        public static final boolean rev_right                   = true;        // Reverse Right motor
     }
     public static class intake {
-        public static final double rotation_deployment          = 0.000000;     // Amount of rotation till intake is completly deployed
-        public static final double rotation_cal                 = 0.00;
+        public static final double heave_speed                  = 0.40;         // Speed of intake run to self cycle a system recovery for a jammed disc
+        public static final double puke_speed                   = 0.90;         // Speed of intake run to eject disc
+        public static final double feed_speed                   = 0.50;         // Speed of intake run to injest disc
+        public static final double feed_rotations               = 4.50;         // Count of rotations to injest disk
+        public static final double rotation_deployment          = 0.000;        // Amount of rotation till intake is completly deployed
+        public static final double rotation_calibration         = 0.00;         // Rotations to lift climber before retracting it to calibrate
+        public static       double rotation_cal_speed           = 0.00;         // Speed at which calibration occurs
+        public static       double posi_tuning_P                = 0.000;        // Proportional Variable
+        public static       double posi_tuning_I                = 0.000;        // Intergral Variable
+        public static       double posi_tuning_D                = 0.000;        // Derivative Variable
+        public static       double posi_tuning_Iz               = 0.000;        // Intergral Variable
+        public static       double posi_tuning_FF               = 0.000;        // Feed Forward Variable
+        public static       double posi_tuning_speedMin         =-0.50;         // Max Retract Motor Speed
+        public static       double posi_tuning_speedMax         = 0.80;         // Max Deploy Motor Speed
+        public static       double feed_tuning_P                = 0.000;        // Proportional Variable
+        public static       double feed_tuning_I                = 0.000;        // Intergral Variable
+        public static       double feed_tuning_D                = 0.000;        // Derivative Variable
+        public static       double feed_tuning_Iz               = 0.000;        // Intergral Variable
+        public static       double feed_tuning_FF               = 0.000;        // Feed Forward Variable
+        public static       double feed_tuning_speedMin         =-0.50;         // Max Retract Motor Speed
+        public static       double feed_tuning_speedMax         = 0.80;         // Max Deploy Motor Speed
+        public static final double position_floor               = 0.000;        //
+        public static final double position_feeder              = 0.000;        //
+        public static final double position_shooting            = 0.000;        //
+        public static final double rotation_retract_unCalSpd    = 0.00;         // Speed to run intake position motor when out of calibration to bring it back into calibration
     }
     public static class lifter {
         public static final boolean rev_left                    = false;
-        public static final boolean rev_right                   = false;
-        public static final double tuning_P                     = 0.350000;     // Proportional Variable
-        public static final double tuning_I                     = 0.000000;     // Intergral Variable
-        public static final double tuning_D                     = 0.000000;     // Derivative Variable
-        public static final double tuning_Iz                    = 0.000000;     // Intergral Z Variable
-        public static final double tuning_FF                    = 0.000000;     // Feed Forward Variable
-        public static final double tuning_speedMin              =-0.50;         // Max Inward Motor Speed
-        public static final double tuning_speedMax              = 0.80;         // Max Outward Motor Speed
+        public static final boolean rev_right                   = true;
+        public static       double tuning_P                     = 0.280;        // Proportional Variable
+        public static       double tuning_I                     = 0.000;        // Intergral Variable
+        public static       double tuning_D                     = 0.034;        // Derivative Variable
+        public static       double tuning_Iz                    = 0.000;        // Intergral Z Variable
+        public static       double tuning_FF                    = 0.000;        // Feed Forward Variable
+        public static       double tuning_speedMin              =-0.30;         // Max Inward Motor Speed
+        public static       double tuning_speedMax              = 0.50;         // Max Outward Motor Speed
         public static final double rotation_calibration         = 5.00;         // Rotations to lift climber before retracting it to calibrate
-        public static final double rotation_cal_speed           = 0.07;         // Speed at which calibration occurs
-        public static final double rotation_climb               = 58.00;         // How many rotations required to fully deply lifter
+        public static final double rotation_cal_speed           = 0.10;         // Speed at which calibration occurs
+        public static final double rotation_climb               = 48.00;        // How many rotations required to fully deply lifter
         public static final double rotation_OV_speed            = 5.00;         // Speed to run lifter at on over ride
     }
     public static class vision {

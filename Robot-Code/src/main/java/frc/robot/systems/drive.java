@@ -3,9 +3,15 @@ import frc.robot.Robot;                                 // Core Robot
 import frc.robot.Constants;                             // Cross Robot Varriables Centralized
 
 import edu.wpi.first.math.MathUtil;                     // Mathematics tools
+import edu.wpi.first.math.filter.SlewRateLimiter;       // Calculates a rate over time
 import edu.wpi.first.util.sendable.SendableRegistry;
 
 public final class drive {
+    // Slew-Rate Limiters
+    private static SlewRateLimiter slewLim_drive =
+        new SlewRateLimiter(Constants.drive.slew_drv);
+    private static SlewRateLimiter slewLim_turn =
+        new SlewRateLimiter(Constants.drive.slew_turn);
     private drive () {}
     public static void controlPeriodic() {              // Periodic to update drive system states
         Robot.drive_difDrive.feed();
@@ -16,7 +22,7 @@ public final class drive {
             Constants.operator.tuning_driver_deadband);
         double robot_drive_y = MathUtil.applyDeadband(
             Robot.drivestation_driver.getLeftX(),
-        0.05);
+        Constants.operator.tuning_driver_deadband);
         Robot.drive_difDrive.arcadeDrive(robot_drive_x, robot_drive_y);
     }
     public static void self(int left, boolean rev_left, int right, boolean rev_right) {
@@ -27,7 +33,7 @@ public final class drive {
         Robot.drive_leftMaster.set(L);
         Robot.drive_rightMaster.set(R);
     }
-    public static void start_up() {                     // Sets up drive motors
+    public static void startup() {                     // Sets up drive motors
         // Reset Motors to factory base for core function settings
         Robot.drive_leftMaster.restoreFactoryDefaults();
         Robot.drive_leftSlave.restoreFactoryDefaults();
