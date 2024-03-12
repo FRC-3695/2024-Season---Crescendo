@@ -33,6 +33,7 @@ public class Robot extends TimedRobot {
   private static final String dash_auto_2 = "AmpDump";
   private static final String dash_auto_3 = "SpeakerAnScram";
   private static final String dash_auto_4 = "AmpDumpAnScram";
+  private static final String dash_auto_5 = "PathPlanner";
   private String dash_autoSelected;
   private final SendableChooser<String> dash_autoOptions = new SendableChooser<>();
 
@@ -125,6 +126,7 @@ public class Robot extends TimedRobot {
     dash_autoOptions.addOption("Amp Dump and Wait", dash_auto_2);
     dash_autoOptions.addOption("Speaker Shoot and Move Over", dash_auto_3);
     dash_autoOptions.addOption("Amp Dump and Move Over", dash_auto_4);
+    dash_autoOptions.addOption("Path Planner", dash_auto_5);
     SmartDashboard.putData("Auto choices", dash_autoOptions);
     // -----------------------------------------------------------
     drive.startup();
@@ -157,6 +159,9 @@ public class Robot extends TimedRobot {
         // Shoot into Speaker and Move out of the way
         break;
       case dash_auto_4:
+        // Dump note into amp and Move out of the way
+        break;
+      case dash_auto_5:
         // Dump note into amp and Move out of the way
         break;
       default:
