@@ -14,10 +14,16 @@
   "NTProvider": {
     "types": {
       "/FMSInfo": "FMSInfo",
-      "/SmartDashboard/Auto choices": "String Chooser"
+      "/SmartDashboard/Auto choices": "String Chooser",
+      "/SmartDashboard/Testing Modes": "String Chooser"
     },
     "windows": {
       "/SmartDashboard/Auto choices": {
+        "window": {
+          "visible": true
+        }
+      },
+      "/SmartDashboard/Testing Modes": {
         "window": {
           "visible": true
         }
@@ -25,11 +31,24 @@
     }
   },
   "NetworkTables": {
+    "Retained Values": {
+      "open": false
+    },
+    "retained": {
+      "SmartDashboard": {
+        "Auto choices": {
+          "open": true
+        }
+      }
+    },
     "transitory": {
       "FMSInfo": {
         "open": true
       },
       "SmartDashboard": {
+        "Testing Modes": {
+          "open": true
+        },
         "open": true
       }
     }
@@ -51,9 +70,6 @@
       "open": true
     },
     "visible": true
-  },
-  "NetworkTables View": {
-    "visible": false
   },
   "Plot": {
     "Plot <0>": {
