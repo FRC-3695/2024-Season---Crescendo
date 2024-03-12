@@ -5,9 +5,47 @@
         "visible": true
       }
     },
+    "Other Devices": {
+      "SPARK MAX [10]": {
+        "name": "[10] Right Shooter"
+      },
+      "SPARK MAX [1]": {
+        "name": "[1] Left Master"
+      },
+      "SPARK MAX [2]": {
+        "name": "[2] Left Slave"
+      },
+      "SPARK MAX [3]": {
+        "name": "[3] Right Master"
+      },
+      "SPARK MAX [4]": {
+        "name": "[4] Right Slave"
+      },
+      "SPARK MAX [5]": {
+        "header": {
+          "open": true
+        },
+        "name": "[5] Left Lifter"
+      },
+      "SPARK MAX [6]": {
+        "name": "[6] Right Lifter"
+      },
+      "SPARK MAX [7]": {
+        "name": "[7] Feeder"
+      },
+      "SPARK MAX [8]": {
+        "name": "[8] Position"
+      },
+      "SPARK MAX [9]": {
+        "name": "[9] Left Shooter"
+      }
+    },
     "RoboRIO": {
-      "6V Rail": {
+      "RoboRIO Input": {
         "open": true
+      },
+      "window": {
+        "visible": true
       }
     }
   },
@@ -31,6 +69,9 @@
     }
   },
   "NetworkTables": {
+    "Persistent Values": {
+      "open": false
+    },
     "Retained Values": {
       "open": false
     },
@@ -81,7 +122,7 @@
             0.0,
             0.8500000238418579
           ],
-          "height": 198,
+          "height": 135,
           "series": [
             {
               "color": [
@@ -103,7 +144,10 @@
             }
           ]
         }
-      ]
+      ],
+      "window": {
+        "name": "Lifter"
+      }
     },
     "Plot <1>": {
       "plots": [
@@ -169,6 +213,48 @@
       "window": {
         "name": "Drive"
       }
+    },
+    "Plot <2>": {
+      "plots": [
+        {
+          "backgroundColor": [
+            0.0,
+            0.0,
+            0.0,
+            0.8500000238418579
+          ],
+          "height": 157,
+          "series": [
+            {
+              "color": [
+                0.2980392277240753,
+                0.44705885648727417,
+                0.6901960968971252,
+                1.0
+              ],
+              "id": "SPARK MAX [7]-Applied Output"
+            },
+            {
+              "color": [
+                0.8666667342185974,
+                0.5176470875740051,
+                0.32156863808631897,
+                1.0
+              ],
+              "id": "SPARK MAX [8]-Applied Output"
+            }
+          ]
+        }
+      ],
+      "window": {
+        "name": "Manipulator"
+      }
     }
+  },
+  "sourceNames": {
+    "DIO[0]": "Left Arm",
+    "DIO[1]": "Right Arm",
+    "DIO[2]": "Retracted",
+    "DIO[3]": "Deploied"
   }
 }
