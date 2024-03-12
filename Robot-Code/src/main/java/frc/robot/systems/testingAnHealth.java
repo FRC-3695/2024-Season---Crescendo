@@ -2,7 +2,6 @@ package frc.robot.systems;
 import frc.robot.Robot;                                         // Core Robot
 import frc.robot.Constants;                                     // Cross Robot Varriables Centralized
 import frc.robot.testingConstants;                              // Cross Robot Testing Varriables Centralized
-import frc.robot.systems.manipulator;
 
 import com.revrobotics.CANSparkBase.ControlType;
 
@@ -50,6 +49,7 @@ public class testingAnHealth {
                 break;
             case "View - Sensors":
                 dashboard_DIO();
+                
                 break;
             case "Shooter - Static Run":
                 shooter_static_run();
