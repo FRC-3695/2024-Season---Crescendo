@@ -78,7 +78,7 @@ public class lifter {
             while(true) { 
                 if (Robot.lifter_left_DIO.get()) {  // Switch is engaged
                     Robot.lifter_left_motor.set(0);
-                } else if (Robot.lifter_left_motor.getOutputCurrent() >= Constants.lifter.rotation_cal_maxAmp) {
+                } else if (Robot.lifter_left_motor.getOutputCurrent() >= Constants.lifter.rotation_cal_maxWatt) {
                     Robot.lifter_left_motor.set(0);
                     Robot.lifter_right_motor.set(0);
                     SmartDashboard.putBoolean("Lifter Calibration Failed", true);
@@ -88,7 +88,7 @@ public class lifter {
                 }
                 if (Robot.lifter_right_DIO.get()) {  // Switch is engaged
                     Robot.lifter_right_motor.set(0);
-                } else if (Robot.lifter_right_motor.getOutputCurrent() >= Constants.lifter.rotation_cal_maxAmp) {
+                } else if (Robot.lifter_right_motor.getOutputCurrent() >= Constants.lifter.rotation_cal_maxWatt) {
                     Robot.lifter_left_motor.set(0);
                     Robot.lifter_right_motor.set(0);
                     SmartDashboard.putBoolean("Lifter Calibration Failed", true);

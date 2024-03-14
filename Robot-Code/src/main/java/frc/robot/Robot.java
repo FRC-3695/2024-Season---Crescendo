@@ -114,11 +114,7 @@ public class Robot extends TimedRobot {
     System.out.println("GIT Revision: "+ BuildConstants.GIT_REVISION);
     System.out.println("Built on: "+ BuildConstants.BUILD_DATE + " @ " + BuildConstants.BUILD_UNIX_TIME);
     System.out.println("GIT_SHA: "+ BuildConstants.GIT_SHA);
-    if(BuildConstants.DIRTY != 0) { // Warning of uncommited changes in deployed build
-      System.out.println("|");
-      System.out.println("****************************************************");
-      System.out.println("    ********** Fruit of the Poisonous Tree *************");
-    }
+    if(BuildConstants.DIRTY != 0) {System.out.println("|\n****************************************************\n****************************************************\n    ********** Fruit of the Poisonous Tree *************");}// Warning of uncommited changes in deployed build
     System.out.println("****************************************************");
     System.out.println("|");
     // Loads Choices into SmartDashboard Autonomous Chooser
