@@ -24,9 +24,9 @@ public class manipulator {
         } else {
             Robot.intake_feeder_motor.set(0);
         }*/
-        if (!Robot.intake_retract_DIO.get() && Robot.drivestation_operator.getLeftY()<= 0) {
+        if (Robot.intake_retract_DIO.get() && Robot.drivestation_operator.getLeftY()<= 0) {
             Robot.intake_position_motor.set(MathUtil.applyDeadband(Robot.drivestation_operator.getLeftY(), Constants.operator.tuning_manip_deadband));
-        } else if (!Robot.intake_deploy_DIO.get() && Robot.drivestation_operator.getLeftY()> 0) {
+        } else if (Robot.intake_deploy_DIO.get() && Robot.drivestation_operator.getLeftY()> 0) {
             Robot.intake_position_motor.set(MathUtil.applyDeadband(Robot.drivestation_operator.getLeftY(), Constants.operator.tuning_manip_deadband));
         } else {
             Robot.intake_position_motor.set(0);
