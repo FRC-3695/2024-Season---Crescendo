@@ -4,16 +4,10 @@
 * Forward `RT`
 * Reverse `LT`
 * Turn Left or Right `Left Stick`
-* High Gear `RB`
-* Low Gear `LB`
 ## Manipulator 'Co-Pilots Controller'
-* Pickup Donut `X` From Floor
-* Receive Donut `Y` From Human Player
-* Shoot Donut into Amp `B`
-* Shoot Donut into Speaker `A`
-* **Auto Action Aquisition** `RT`
-## Chain Climber 'Dual Operator Control'
-* Lifter Up `DPAD UP`
-* Lifter Down `DPAD DOWN`
-* Lifter Auto Up `RB`-`Pressed`
-* Lifter Auto Down `RB`-`Released`
+* Run Intake **In** `A`
+* Run Intake **Out** `B`
+* Run Launcher `Right Trigger`
+* Manipulator Position `Left Stick`
+* Lifter Deploy `Left Bumper In`
+* Lifter Deploy `Left Bumper Out`
