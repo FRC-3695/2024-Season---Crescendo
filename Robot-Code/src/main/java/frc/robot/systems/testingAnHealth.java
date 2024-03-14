@@ -49,7 +49,6 @@ public class testingAnHealth {
                 break;
             case "View - Sensors":
                 dashboard_DIO();
-                
                 break;
             case "Shooter - Static Run":
                 shooter_static_run();
@@ -115,5 +114,9 @@ public class testingAnHealth {
     private static final void dashboard_DIO() {
         SmartDashboard.putNumber("Shooter Running RPM Left", Robot.shooter_left_encoder.getVelocity());
         SmartDashboard.putNumber("Shooter Running RPM Right", Robot.shooter_right_encoder.getVelocity());
+        SmartDashboard.putBoolean("Sensor Lifter - Left", Robot.lifter_left_DIO.get());
+        SmartDashboard.putBoolean("Sensor Lifter - Right", Robot.lifter_right_DIO.get());
+        SmartDashboard.putBoolean("Sensor Intake - Home", Robot.intake_retract_DIO.get());
+        SmartDashboard.putBoolean("Sensor Intake - Deploy", Robot.intake_deploy_DIO.get());
     }
 }
