@@ -97,7 +97,7 @@ public final class Constants {
         public static       double tuning_speedMax              = 0.50;         // Max Outward Motor Speed
         public static final double rotation_calibration         = 5.00;         // Rotations to lift climber before retracting it to calibrate
         public static final double rotation_cal_speed           = 0.10;         // Speed at which calibration occurs
-        public static final double rotation_cal_maxAmp          = 10;           // Max safe amperage during calibration
+        public static final double rotation_cal_maxWatt         = 120;           // Max safe current during calibration
         public static final double rotation_climb               = 65.00;        // How many rotations required to fully deply lifter
         public static final double rotation_OV_speed            = 5.00;         // Speed to run lifter at on over ride
 
