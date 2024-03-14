@@ -5,6 +5,8 @@ import frc.robot.Constants;                             // Cross Robot Varriable
 import com.revrobotics.CANSparkMax;                     // SparkMAX CAN Control Map and Watchdog
 import com.revrobotics.CANSparkBase.IdleMode;           // Provides IdleModes on SparkMAX
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 public class lifter {
     private static boolean code_lifter_cal = false;     // Has lifter been calibrated
     private lifter() {}
@@ -63,6 +65,7 @@ public class lifter {
         Robot.lifter_right_PID.setOutputRange(Constants.lifter.tuning_speedMin, Constants.lifter.tuning_speedMax);
     }
     private static void zero() {                        // Re-Homes lifter and Zeros motor controller's encoder's
+        SmartDashboard.putBoolean("Lifter Calibration Failed", false);
         if(Robot.lifter_left_DIO.get() && Robot.lifter_right_DIO.get()) { // If already home
             Robot.lifter_left_encoder.setPosition(0);
             Robot.lifter_right_encoder.setPosition(0);
@@ -75,11 +78,21 @@ public class lifter {
             while(true) { 
                 if (Robot.lifter_left_DIO.get()) {  // Switch is engaged
                     Robot.lifter_left_motor.set(0);
+                } else if (Robot.lifter_left_motor.getOutputCurrent() >= Constants.lifter.rotation_cal_maxAmp) {
+                    Robot.lifter_left_motor.set(0);
+                    Robot.lifter_right_motor.set(0);
+                    SmartDashboard.putBoolean("Lifter Calibration Failed", true);
+                    break;
                 } else {  // Switch is not engaged
                     Robot.lifter_left_motor.set(-Constants.lifter.rotation_cal_speed);
                 }
                 if (Robot.lifter_right_DIO.get()) {  // Switch is engaged
                     Robot.lifter_right_motor.set(0);
+                } else if (Robot.lifter_right_motor.getOutputCurrent() >= Constants.lifter.rotation_cal_maxAmp) {
+                    Robot.lifter_left_motor.set(0);
+                    Robot.lifter_right_motor.set(0);
+                    SmartDashboard.putBoolean("Lifter Calibration Failed", true);
+                    break;
                 } else {  // Switch is not engaged
                     Robot.lifter_right_motor.set(-Constants.lifter.rotation_cal_speed);
                 }
