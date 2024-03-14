@@ -13,6 +13,7 @@ import edu.wpi.first.math.MathUtil;
 
 public class manipulator {
     static double intake_feeder_speed;
+    static double intake_position_speed;
     private manipulator() {}
     public static final void startup() {
         motorSetup();
@@ -23,7 +24,13 @@ public class manipulator {
         } else {
             Robot.intake_feeder_motor.set(0);
         }*/
-        Robot.intake_position_motor.set(MathUtil.applyDeadband(Robot.drivestation_operator.getLeftY(), Constants.operator.tuning_manip_deadband));
+        if (!Robot.intake_retract_DIO.get() && Robot.drivestation_operator.getLeftY()<= 0) {
+            Robot.intake_position_motor.set(MathUtil.applyDeadband(Robot.drivestation_operator.getLeftY(), Constants.operator.tuning_manip_deadband));
+        } else if (!Robot.intake_deploy_DIO.get() && Robot.drivestation_operator.getLeftY()> 0) {
+            Robot.intake_position_motor.set(MathUtil.applyDeadband(Robot.drivestation_operator.getLeftY(), Constants.operator.tuning_manip_deadband));
+        } else {
+            Robot.intake_position_motor.set(0);
+        }
         if (Robot.drivestation_operator.getBButton()) {
             intake_feeder_speed = Constants.intake.feed_tuning_speedMin;
         } else if (Robot.drivestation_operator.getAButton()) {
@@ -31,7 +38,7 @@ public class manipulator {
         } else {
             intake_feeder_speed = 0;
         }
-        Robot.intake_feeder_motor.set(intake_feeder_speed);
+        Robot.intake_feeder_motor.set(intake_feeder_speed/Constants.intake.intake_tuning_clamp);
         if (Robot.drivestation_operator.getRightTriggerAxis() > Constants.operator.tuning_manip_deadband) {
             Robot.shooter_left_motor.set(utils.map(Robot.drivestation_operator.getRightTriggerAxis(), Constants.operator.tuning_manip_deadband, 1, .5, 1));
             Robot.shooter_right_motor.set(utils.map(Robot.drivestation_operator.getRightTriggerAxis(), Constants.operator.tuning_manip_deadband, 1, .5, 1));
