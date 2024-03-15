@@ -1,7 +1,3 @@
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
-
 package frc.robot;
 // Constants libraries
 //- import frc.robot.Constants;                             // Cross Robot Varriables Centralized
@@ -12,20 +8,22 @@ import frc.robot.systems.lifter;
 import frc.robot.systems.manipulator;
 import frc.robot.systems.testingAnHealth;
 // Lib for SparkMax Motor Controllers
-import com.revrobotics.CANSparkMax;                     // SparkMAX CAN Control Map and Watchdog
-import com.revrobotics.CANSparkLowLevel.MotorType;      // MotorType Definitions
-import com.revrobotics.RelativeEncoder;                 // REVLib Relative Encoder
-import com.revrobotics.SparkPIDController;              // REVLib SparkPID Control
-import com.revrobotics.SparkRelativeEncoder;            // REVLib RelativeEncoder Reporting from device attached to SparkDevice
+import com.revrobotics.CANSparkMax;                         // SparkMAX CAN Control Map and Watchdog
+import com.revrobotics.CANSparkLowLevel.MotorType;          // MotorType Definitions
+import com.revrobotics.RelativeEncoder;                     // REVLib Relative Encoder
+import com.revrobotics.SparkPIDController;                  // REVLib SparkPID Control
+import com.revrobotics.SparkRelativeEncoder;                // REVLib RelativeEncoder Reporting from device attached to SparkDevice
 // Adds Smart Dashboard Capabilities & Autonomous chooser
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 // WPILib  Libraries
-import edu.wpi.first.wpilibj.TimedRobot;                // Support for Timed code layout
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;   // Introducing Prebuilt drivecontroller
-import edu.wpi.first.wpilibj.XboxController;            // Support for Xbox Controller
-import edu.wpi.first.wpilibj.DigitalInput;              // RoboRio Digital Input Control
-import edu.wpi.first.wpilibj2.command.CommandScheduler; // Gives support for scheduling and descheduling tasks in Scheduler
+import edu.wpi.first.wpilibj.TimedRobot;                    // Support for Timed code layout
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;       // Introducing Prebuilt drivecontroller
+import edu.wpi.first.wpilibj.XboxController;                // Support for Xbox Controller
+import edu.wpi.first.wpilibj.DigitalInput;                  // RoboRio Digital Input Control
+import edu.wpi.first.wpilibj.PowerDistribution;             // PowerHub
+import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;  // PowerHub Type
+import edu.wpi.first.wpilibj2.command.CommandScheduler;     // Gives support for scheduling and descheduling tasks in Scheduler
 
 public class Robot extends TimedRobot {
   // Creation of Autonomous functions IDs and Varriables
@@ -58,6 +56,9 @@ public class Robot extends TimedRobot {
     new CANSparkMax(Constants.IDs.shooter_left_motor, MotorType.kBrushless);
   public static final CANSparkMax shooter_right_motor =
     new CANSparkMax(Constants.IDs.shooter_right_motor, MotorType.kBrushless);
+  // Defining Powerhub
+  public static PowerDistribution power_hub =
+    new PowerDistribution(Constants.IDs.power_hub, ModuleType.kRev);
   // Defining Encoders for Functions
   public static RelativeEncoder drive_left_encoder =
     drive_leftMaster.getEncoder();
@@ -125,12 +126,14 @@ public class Robot extends TimedRobot {
     dash_autoOptions.addOption("Path Planner", dash_auto_5);
     SmartDashboard.putData("Auto choices", dash_autoOptions);
     // -----------------------------------------------------------
+    power.setup();
     drive.startup();
     manipulator.startup();
   }
   @Override
   public void robotPeriodic() {
     CommandScheduler.getInstance().run();
+    power.controlPeriodic();
   }
   @Override
   public void disabledInit() {}
