@@ -10,7 +10,8 @@ public final class testingConstants {
             "Shooter - Static Run", 
             "Lifter - Calibration", 
             "Intake - Calibration", 
-            "Vision - Development"
+            "Vision - Development",
+            "Power - Check"
         };
     }
 }

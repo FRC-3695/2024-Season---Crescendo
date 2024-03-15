@@ -2,6 +2,8 @@ package frc.robot.systems;
 import frc.robot.Robot;                                         // Core Robot
 import frc.robot.Constants;                                     // Cross Robot Varriables Centralized
 import frc.robot.testingConstants;                              // Cross Robot Testing Varriables Centralized
+import frc.robot.utils;
+import frc.robot.systems.power;
 
 import com.revrobotics.CANSparkBase.ControlType;
 
@@ -34,8 +36,11 @@ public class testingAnHealth {
                     break;
                 case "View - Sensors":
                     break;
+                case "Power - Check":
+                    power.setup();
+                    break;
                 default:  // No Selection Made for Mode provided
-                    System.out.println("No Testing System Selected");
+                    utils.Logging(0, "No Logging System Selected");
                     break;
             }
         }
@@ -52,6 +57,9 @@ public class testingAnHealth {
                 break;
             case "Shooter - Static Run":
                 shooter_static_run();
+                break;
+            case "Power - Check":
+                power.controlPeriodic();
                 break;
             default:  // No Selection Made for Mode provided
                 break;
