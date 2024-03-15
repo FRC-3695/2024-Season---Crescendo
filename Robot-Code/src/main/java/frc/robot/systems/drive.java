@@ -1,5 +1,6 @@
 package frc.robot.systems;
 import frc.robot.Robot;                                 // Core Robot
+import frc.robot.utils;
 import frc.robot.Constants;                             // Cross Robot Varriables Centralized
 
 import edu.wpi.first.math.MathUtil;                     // Mathematics tools
@@ -17,15 +18,7 @@ public final class drive {
         double robot_drive_y = MathUtil.applyDeadband(
             Robot.drivestation_driver.getLeftX(),
         Constants.operator.tuning_driver_deadband);
-        Robot.drive_difDrive.arcadeDrive(robot_drive_x, robot_drive_y);
-    }
-    public static void self(int left, boolean rev_left, int right, boolean rev_right) {
-        double L = ((left-0)/(100-0))*(1-0)+0;
-        double R = ((right-0)/(100-0))*(1-0)+0;
-        if (rev_left) {L = -L;}
-        if (rev_right) {R = -R;}
-        Robot.drive_leftMaster.set(L);
-        Robot.drive_rightMaster.set(R);
+        Robot.drive_difDrive.arcadeDrive(utils.map(robot_drive_x, -1, 1, -Constants.drive.tuning_speedMax, Constants.drive.tuning_speedMax), utils.map(robot_drive_y, -1, 1, -Constants.drive.tuning_speedMax, Constants.drive.tuning_speedMax));
     }
     public static void startup() {                     // Sets up drive motors
         // Reset Motors to factory base for core function settings
