@@ -38,11 +38,14 @@ public final class Constants {
         public static final int device_radio                    = 21; // PowerHub Port
     }
     public static class drive {
+        public static final double  tuning_speedMax             = 5;
         public static final double  slew_drv                    = 1;    // Slew-Rate Limit for Acceletation
         public static final double  slew_turn                   = 0.5;    // Slew-Rate Limit for Turning
         public static       boolean rev_DT                      = false;  // To be used in future to offer drive reversing to driver
         public static final boolean rev_left                    = true;   // Reverses left drivetrain
         public static final boolean rev_right                   = false;  // Reverses right drivetrain
+        public static final double  measure_wheel               = 6.00;   // Wheel Diameter
+        public static final double  measure_gearBoxRatio        = 8.45;
     }
     public static class operator {
         public static final int controller_xBox_driver          = 0;            // DS USB ID
@@ -53,13 +56,13 @@ public final class Constants {
     public static class shooter {
         public static final double slew_spinUp                  = 0.75;         // Forced Graceful SpinUp to prevent low current events on robot
         public static       double tuning_RPM                   = 4300;         // Motor RPM
-        public static       double tuning_P                     = 0.75;        // Proportional Variable
+        public static       double tuning_P                     = 0.75;         // Proportional Variable
         public static       double tuning_I                     = 0.000;        // Intergral Variable
-        public static       double tuning_D                     = 0.03;        // Derivative Variable
+        public static       double tuning_D                     = 0.03;         // Derivative Variable
         public static       double tuning_Iz                    = 0.000;        // Intergral Variable
         public static       double tuning_FF                    = 0.000;        // Feed Forward Variable
         public static final boolean rev_left                    = false;        // Reverse Left motor
-        public static final boolean rev_right                   = true;        // Reverse Right motor
+        public static final boolean rev_right                   = true;         // Reverse Right motor
     }
     public static class intake {
         public static final double heave_speed                  = 0.40;         // Speed of intake run to self cycle a system recovery for a jammed disc
@@ -101,7 +104,7 @@ public final class Constants {
         public static       double tuning_speedMax              = 0.50;         // Max Outward Motor Speed
         public static final double rotation_calibration         = 5.00;         // Rotations to lift climber before retracting it to calibrate
         public static final double rotation_cal_speed           = 0.10;         // Speed at which calibration occurs
-        public static final double rotation_cal_maxWatt         = 120;           // Max safe current during calibration
+        public static final double rotation_cal_maxWatt         = 120;          // Max safe current during calibration
         public static final double rotation_climb               = 65.00;        // How many rotations required to fully deply lifter
         public static final double rotation_OV_speed            = 5.00;         // Speed to run lifter at on over ride
 
@@ -148,4 +151,7 @@ public final class Constants {
         public static final String frontCamera                  = "limelight";       // Front of Robot Limelight3
         public static final String rearCamera                   = "";       // Front of Robot Limelight2
     }   
+    public static class Universals {
+        public static final double PI                           = 3.142;        // PI
+    }
 }
