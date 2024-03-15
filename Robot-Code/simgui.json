@@ -10,6 +10,9 @@
         "name": "[10] Right Shooter"
       },
       "SPARK MAX [1]": {
+        "header": {
+          "open": true
+        },
         "name": "[1] Left Master"
       },
       "SPARK MAX [2]": {
@@ -38,6 +41,16 @@
       },
       "SPARK MAX [9]": {
         "name": "[9] Left Shooter"
+      }
+    },
+    "PowerDistributions": {
+      "11": {
+        "PowerDistribution[11]": {
+          "open": true
+        }
+      },
+      "window": {
+        "visible": true
       }
     },
     "RoboRIO": {
