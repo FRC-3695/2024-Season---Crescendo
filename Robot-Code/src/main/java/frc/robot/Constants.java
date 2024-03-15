@@ -4,34 +4,38 @@ public final class Constants {
     public static class IDs {                    // View is taken from rear of robot for sides
         // Drive Train Motor Controllers
         public static final int drive_leftFront_motor           = 1;  // CAN ID
-        public static final int drive_leftFront_powerBus        = 0;  // PowerHub Port
+        public static final int drive_leftFront_powerBus        = 12;  // PowerHub Port
         public static final int drive_leftRear_motor            = 2;  // CAN ID
-        public static final int drive_leftRear_powerBus         = 0;  // PowerHub Port
+        public static final int drive_leftRear_powerBus         = 13;  // PowerHub Port
         public static final int drive_rightFront_motor          = 3;  // CAN ID
-        public static final int drive_rightFront_powerBus       = 0;  // PowerHub Port
+        public static final int drive_rightFront_powerBus       = 7;  // PowerHub Port
         public static final int drive_rightRear_motor           = 4;  // CAN ID
-        public static final int drive_rightRear_powerBus        = 0;  // PowerHub Port
+        public static final int drive_rightRear_powerBus        = 6;  // PowerHub Port
         // Lifter Motor Controllers
         public static final int lifter_left_motor               = 5;  // CAN ID
-        public static final int lifter_left_powerBus            = 0;  // PowerHub Port
+        public static final int lifter_left_powerBus            = 11;  // PowerHub Port
         public static final int lifter_right_motor              = 6;  // CAN ID
-        public static final int lifter_right_powerBus           = 0;  // PowerHub Port
+        public static final int lifter_right_powerBus           = 8;  // PowerHub Port
         public static final int lifter_left_sensor              = 0;  // Digital IO
         public static final int lifter_right_sensor             = 1;  // Digital IO
         // Manipulator Motor Controllers
         public static final int manipulator_feed_motor          = 7;  // CAN ID
-        public static final int manipulator_feed_powerBus       = 0;  // PowerHub Port
+        public static final int manipulator_feed_powerBus       = 14;  // PowerHub Port
         public static final int manipulator_posi_motor          = 8;  // CAN ID
-        public static final int manipulator_posi_powerBus       = 0;  // PowerHub Port
+        public static final int manipulator_posi_powerBus       = 15;  // PowerHub Port
         public static final int manupilator_sensor_retract      = 2;  // Digital IO
         public static final int manipulator_sensor_deploy       = 3;  // Digital IO
         public static final int manipulator_sensor_intake_L     = 4;  // Digital IO
         public static final int manipulator_sensor_intake_R     = 5;  // Digital IO
         // Shooter Motor Controllers
         public static final int shooter_left_motor              = 9;  // CAN ID
-        public static final int shooter_left_powerBus           = 0;  // PowerHub Port
+        public static final int shooter_left_powerBus           = 10;  // PowerHub Port
         public static final int shooter_right_motor             = 10; // CAN ID
-        public static final int shooter_right_powerBus          = 0;  // PowerHub Port
+        public static final int shooter_right_powerBus          = 9;  // PowerHub Port
+        // Devices
+        public static final int power_hub                       = 11; // CAN ID
+        public static final int device_rio                      = 20; // PowerHub Port
+        public static final int device_radio                    = 21; // PowerHub Port
     }
     public static class drive {
         public static final double  slew_drv                    = 1;    // Slew-Rate Limit for Acceletation
